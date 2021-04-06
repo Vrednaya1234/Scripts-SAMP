@@ -1,7 +1,7 @@
 script_name("Detals Teleport")
 script_author("Vrednaya.")
 
--- Р‘РёР±Р»РёРѕС‚РµРєРё
+-- Библиотеки
 require "lib.moonloader"
 local tag = "{741DCE}Detals Teleport: {FFFFFF}"
 local ev = require 'samp.events'
@@ -11,18 +11,9 @@ encoding.default = 'CP1252'
 u8 = encoding.UTF8
 local inicfg = require 'inicfg'
 local dlstatus = require('moonloader').download_status
-local yam = "test"
--- РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ
-update_state = false
 
-local script_vers = 10
-local script_vers_text = "10.00"
+-- Автообновление
 
-local update_url = "https://raw.githubusercontent.com/Vrednaya1234/Scripts-SAMP/main/update.ini" -- С‚СѓС‚ С‚РѕР¶Рµ СЃРІРѕСЋ СЃСЃС‹Р»РєСѓ
-local update_path = getWorkingDirectory() .. "/update.ini" -- Рё С‚СѓС‚ СЃРІРѕСЋ СЃСЃС‹Р»РєСѓ
-
-local script_url = "https://github.com/thechampguess/scripts/blob/master/autoupdate_lesson_16.luac?raw=true" -- С‚СѓС‚ СЃРІРѕСЋ СЃСЃС‹Р»РєСѓ
-local script_path = thisScript().path
 
 -- inicfg
 local mainIni = inicfg.load({
@@ -55,17 +46,17 @@ function main()
     while not isSampAvailable() do wait(100) end
 	  
 	
-	sampAddChatMessage(tag .. "РРґРµС‚ РїСЂРѕРІРµСЂРєР° РЅР° СЃРµСЂРІРµСЂ.")
+	sampAddChatMessage(tag .. "Идет проверка на сервер.")
 	 wait(1000)
 	  if not checkServer(select(1, sampGetCurrentServerAddress())) then
-		sampAddChatMessage(tag .. "РЎРєСЂРёРїС‚ СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ РЅР° СЃРµСЂРІРµСЂР°С… RDS!")
+		sampAddChatMessage(tag .. "Скрипт работает только на серверах RDS!")
 		wait(4000)
 		thisScript():unload()
 	end
    wait(2000)
- sampAddChatMessage(tag .. "РџСЂРѕРІРµСЂРєР° РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ")
+ sampAddChatMessage(tag .. "Проверка прошла успешно")
    
-	sampAddChatMessage(tag .. "РЈСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ!")
+	sampAddChatMessage(tag .. "Успешно загружен!")
 	
 	 sampRegisterChatCommand("update", cmd_update)
 	sampRegisterChatCommand('gotpdl', function()
@@ -107,41 +98,55 @@ function main()
 	setCharCoordinates(PLAYER_PED, 1975.55, 757.661, 10.8203)
 	wait(time)
 	setCharCoordinates(PLAYER_PED, 2467.09, 2796.79, 10.8203)
-	sampAddChatMessage(tag .. "РЈРІС‹, РЅРѕ СЌС‚Рѕ РїРѕСЃР»РµРґРЅРµРµ РјРµСЃС‚Рѕ :(")
+	sampAddChatMessage(tag .. "Увы, но это последнее место :(")
 	wait(time)
 	end)
 	end)
 	
 	
-	sampAddChatMessage(tag .. "РРґРµС‚ РїСЂРѕРІРµСЂРєР° РѕР±РЅРѕРІР»РµРЅРёСЏ.")
-	wait(900)
-	downloadUrlToFile(update_url, update_path, function(id, status)
-        if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-            updateIni = inicfg.load(nil, update_path)
-            if tonumber(mainIni.settings.vers) > script_vers then
-                sampAddChatMessage(tag .. "Р•СЃС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ! Р’РµСЂСЃРёСЏ: " .. mainIni.settings.vers_text, -1)
-                update_state = true
-            end
-            os.remove(update_path)
-        end
-    end)
+	sampAddChatMessage(tag .. "Идет проверка обновления.")
+    update()
 	
 	while true do
 		wait(0)
 		
-		 if update_state then
-            downloadUrlToFile(script_url, script_path, function(id, status)
-                if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-                    sampAddChatMessage("РЎРєСЂРёРїС‚ СѓСЃРїРµС€РЅРѕ РѕР±РЅРѕРІР»РµРЅ!", -1)
-                    thisScript():reload()
-                end
-            end)
-            break
-        end
+
 		
 	end
 end
 
-function cmd_update(arg)
-    sampShowDialog(1000, "РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ v2.0", "{FFFFFF}Р­С‚Рѕ СѓСЂРѕРє РїРѕ РѕР±РЅРѕРІР»РµРЅРёСЋ\n{FFF000}РќРѕРІР°СЏ РІРµСЂСЃРёСЏ", "Р—Р°РєСЂС‹С‚СЊ", "", 0)
+function update()
+  local fpath = os.getenv('TEMP') .. '\\testing_version.json' -- куда будет качаться наш файлик для сравнения версии
+  downloadUrlToFile('', fpath, function(id, status, p1, p2) -- ссылку на ваш гитхаб где есть строчки которые я ввёл в теме или любой другой сайт
+    if status == dlstatus.STATUS_ENDDOWNLOADDATA then
+    local f = io.open(fpath, 'r') -- открывает файл
+    if f then
+      local info = decodeJson(f:read('*a')) -- читает
+      updatelink = info.updateurl
+      if info and info.latest then
+        version = tonumber(info.latest) -- переводит версию в число
+        if version > tonumber(thisScript().version) then -- если версия больше чем версия установленная то...
+          lua_thread.create(goupdate) -- апдейт
+        else -- если меньше, то
+          update = false -- не даём обновиться
+          sampAddChatMessage((tag.. 'У вас установленна актуальная версия скрипта.'), color)
+        end
+      end
+    end
+  end
+end)
 end
+--скачивание актуальной версии
+function goupdate()
+sampAddChatMessage(tag .. 'Обнаружена новая версия скрипта! Запускаю обновление!')
+sampAddChatMessage(tag .. 'Текущая версия: '..thisScript().version..". Новая версия: "..version)
+wait(300)
+downloadUrlToFile(updatelink, thisScript().path, function(id3, status1, p13, p23) -- качает ваш файлик с latest version
+  if status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
+  sampAddChatMessage(tag .. "Обновление завершено!")
+  thisScript():reload()
+end
+end)
+end
+
+-- ВСЁ!
