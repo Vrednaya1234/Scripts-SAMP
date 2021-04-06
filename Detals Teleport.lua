@@ -11,12 +11,12 @@ encoding.default = 'CP1252'
 u8 = encoding.UTF8
 local inicfg = require 'inicfg'
 local dlstatus = require('moonloader').download_status
-
+local yam = "test"
 -- Автообновление
 update_state = false
 
-local script_vers = 1
-local script_vers_text = "Relis"
+local script_vers = 10
+local script_vers_text = "10.00"
 
 local update_url = "https://raw.githubusercontent.com/Vrednaya1234/Scripts-SAMP/main/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
