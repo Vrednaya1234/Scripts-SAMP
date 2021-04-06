@@ -1,7 +1,7 @@
 script_name("Detals Teleport")
 script_author("Vrednaya.")
 
--- Библиотеки
+-- Р‘РёР±Р»РёРѕС‚РµРєРё
 require "lib.moonloader"
 local tag = "{741DCE}Detals Teleport: {FFFFFF}"
 local ev = require 'samp.events'
@@ -12,16 +12,16 @@ u8 = encoding.UTF8
 local inicfg = require 'inicfg'
 local dlstatus = require('moonloader').download_status
 
--- Автообновление
+-- РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ
 update_state = false
 
 local script_vers = 1
 local script_vers_text = "Relis"
 
-local update_url = "https://raw.githubusercontent.com/Vrednaya1234/Scripts-SAMP/main/update.ini" -- тут тоже свою ссылку
-local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
+local update_url = "https://raw.githubusercontent.com/Vrednaya1234/Scripts-SAMP/main/update.ini" -- С‚СѓС‚ С‚РѕР¶Рµ СЃРІРѕСЋ СЃСЃС‹Р»РєСѓ
+local update_path = getWorkingDirectory() .. "/update.ini" -- Рё С‚СѓС‚ СЃРІРѕСЋ СЃСЃС‹Р»РєСѓ
 
-local script_url = "https://github.com/thechampguess/scripts/blob/master/autoupdate_lesson_16.luac?raw=true" -- тут свою ссылку
+local script_url = "https://github.com/thechampguess/scripts/blob/master/autoupdate_lesson_16.luac?raw=true" -- С‚СѓС‚ СЃРІРѕСЋ СЃСЃС‹Р»РєСѓ
 local script_path = thisScript().path
 
 -- inicfg
@@ -55,17 +55,17 @@ function main()
     while not isSampAvailable() do wait(100) end
 	  
 	
-	sampAddChatMessage(tag .. "Идет проверка на сервер.")
+	sampAddChatMessage(tag .. "РРґРµС‚ РїСЂРѕРІРµСЂРєР° РЅР° СЃРµСЂРІРµСЂ.")
 	 wait(1000)
 	  if not checkServer(select(1, sampGetCurrentServerAddress())) then
-		sampAddChatMessage(tag .. "Скрипт работает только на серверах RDS!")
+		sampAddChatMessage(tag .. "РЎРєСЂРёРїС‚ СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ РЅР° СЃРµСЂРІРµСЂР°С… RDS!")
 		wait(4000)
 		thisScript():unload()
 	end
    wait(2000)
- sampAddChatMessage(tag .. "Проверка прошла успешно")
+ sampAddChatMessage(tag .. "РџСЂРѕРІРµСЂРєР° РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ")
    
-	sampAddChatMessage(tag .. "Успешно загружен!")
+	sampAddChatMessage(tag .. "РЈСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ!")
 	
 	 sampRegisterChatCommand("update", cmd_update)
 	sampRegisterChatCommand('gotpdl', function()
@@ -107,19 +107,19 @@ function main()
 	setCharCoordinates(PLAYER_PED, 1975.55, 757.661, 10.8203)
 	wait(time)
 	setCharCoordinates(PLAYER_PED, 2467.09, 2796.79, 10.8203)
-	sampAddChatMessage(tag .. "Увы, но это последнее место :(")
+	sampAddChatMessage(tag .. "РЈРІС‹, РЅРѕ СЌС‚Рѕ РїРѕСЃР»РµРґРЅРµРµ РјРµСЃС‚Рѕ :(")
 	wait(time)
 	end)
 	end)
 	
 	
-	sampAddChatMessage(tag .. "Идет проверка обновления.")
+	sampAddChatMessage(tag .. "РРґРµС‚ РїСЂРѕРІРµСЂРєР° РѕР±РЅРѕРІР»РµРЅРёСЏ.")
 	wait(900)
 	downloadUrlToFile(update_url, update_path, function(id, status)
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
             updateIni = inicfg.load(nil, update_path)
             if tonumber(mainIni.settings.vers) > script_vers then
-                sampAddChatMessage(tag .. "Есть обновление! Версия: " .. mainIni.settings.vers_text, -1)
+                sampAddChatMessage(tag .. "Р•СЃС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ! Р’РµСЂСЃРёСЏ: " .. mainIni.settings.vers_text, -1)
                 update_state = true
             end
             os.remove(update_path)
@@ -132,7 +132,7 @@ function main()
 		 if update_state then
             downloadUrlToFile(script_url, script_path, function(id, status)
                 if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-                    sampAddChatMessage("Скрипт успешно обновлен!", -1)
+                    sampAddChatMessage("РЎРєСЂРёРїС‚ СѓСЃРїРµС€РЅРѕ РѕР±РЅРѕРІР»РµРЅ!", -1)
                     thisScript():reload()
                 end
             end)
@@ -143,5 +143,5 @@ function main()
 end
 
 function cmd_update(arg)
-    sampShowDialog(1000, "Автообновление v2.0", "{FFFFFF}Это урок по обновлению\n{FFF000}Новая версия", "Закрыть", "", 0)
+    sampShowDialog(1000, "РђРІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ v2.0", "{FFFFFF}Р­С‚Рѕ СѓСЂРѕРє РїРѕ РѕР±РЅРѕРІР»РµРЅРёСЋ\n{FFF000}РќРѕРІР°СЏ РІРµСЂСЃРёСЏ", "Р—Р°РєСЂС‹С‚СЊ", "", 0)
 end
