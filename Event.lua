@@ -1,6 +1,6 @@
 script_name('Event')
 script_properties("Event.lua")
-script_version('1.4')
+script_version('1.2')
 
 -- Библиотеки
 require "lib.moonloader"
@@ -78,20 +78,20 @@ function autoupdate(json_url, prefix, url)
               lua_thread.create(function(prefix)
                 local dlstatus = require('moonloader').download_status
                 local color = -1
-                sampAddChatMessage(tag .. 'Доступно новое обновление! Пытаюсь обновиться c '..thisScript().version..' на '..updateversion)
+                sampAddChatMessage(tag .. '[Mono Tools]{FFFFFF} Доступно новое обновление! Пытаюсь обновиться c '..thisScript().version..' на '..updateversion)
                 wait(250)
                 downloadUrlToFile(updatelink, thisScript().path,
                   function(id3, status1, p13, p23)
                     if status1 == dlstatus.STATUS_DOWNLOADINGDATA then
                     elseif status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-                      sampAddChatMessage(tag ..'Скрипт успешно обновлён.')
-					  sampAddChatMessage(tag ..'Ознакомиться со всеми обновлениями вы сможете в Меню скрипта.')
+                      sampAddChatMessage(tag ..'[Mono Tools]{FFFFFF} Скрипт успешно обновлён.')
+					  sampAddChatMessage(tag ..'[Mono Tools]{FFFFFF} Ознакомиться со всеми обновлениями вы сможете в Меню скрипта.')
                       goupdatestatus = true
                       lua_thread.create(function() wait(500) thisScript():reload() end)
                     end
                     if status1 == dlstatus.STATUSEX_ENDDOWNLOAD then
                       if goupdatestatus == nil then
-                        sampAddChatMessage(tag ..'Не удалось обновить скрипт! Обратитесь к автору скрипта.')
+                        sampAddChatMessage(tag ..'[Mono Tools]{FFFFFF} Не удалось обновить скрипт! Обратитесь к автору скрипта.')
                         update = false
                       end
                     end
