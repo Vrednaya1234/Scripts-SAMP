@@ -2,7 +2,7 @@ script_name('Event')
 script_properties("Event.lua")
 script_version('1.6')
 
--- Библиотеки
+-- Р‘РёР±Р»РёРѕС‚РµРєРё
 require "lib.moonloader"
 local tag = "{E3294D}RDS Events: {FFFFFF}"
 local ev = require 'samp.events'
@@ -24,9 +24,9 @@ local vkeys	= require "lib.vkeys"
 local window_mess = imgui.ImBool(false)
 local sw, sh = getScreenResolution()
 local mp_combo = imgui.ImInt(0)
-local arr_mp = {u8"Прятки на корабле", u8"Прятки", u8"Русская Рулетка", u8"Король Дигла", u8"Fall Guys", u8"UFC"}
-local arr_prise = {u8"Вирты", u8"Очки", u8"Коины", u8"Рубли", u8"Стандарт"}
-local arr_minigun = {u8"Попросить", u8"Выдать себе", u8"Выдать другому"}
+local arr_mp = {u8"РџСЂСЏС‚РєРё РЅР° РєРѕСЂР°Р±Р»Рµ", u8"РџСЂСЏС‚РєРё", u8"Р СѓСЃСЃРєР°СЏ Р СѓР»РµС‚РєР°", u8"РљРѕСЂРѕР»СЊ Р”РёРіР»Р°", u8"Fall Guys", u8"UFC"}
+local arr_prise = {u8"Р’РёСЂС‚С‹", u8"РћС‡РєРё", u8"РљРѕРёРЅС‹", u8"Р СѓР±Р»Рё", u8"РЎС‚Р°РЅРґР°СЂС‚"}
+local arr_minigun = {u8"РџРѕРїСЂРѕСЃРёС‚СЊ", u8"Р’С‹РґР°С‚СЊ СЃРµР±Рµ", u8"Р’С‹РґР°С‚СЊ РґСЂСѓРіРѕРјСѓ"}
 local minigun_combo = imgui.ImInt(0)
 local mp_prise = imgui.ImInt(0)
 local prise_kol = imgui.ImBuffer(200)
@@ -47,7 +47,7 @@ tServers = {
         '46.174.55.87', -- 02
         '46.174.49.170', -- 03
         '46.174.55.169', -- 04
-		"46.174.49.47" -- разработка
+		"46.174.49.47" -- СЂР°Р·СЂР°Р±РѕС‚РєР°
 }
 
 function checkServer(ip)
@@ -178,90 +178,90 @@ function imgui.OnDrawFrame()
 		imgui.SetNextWindowSize(imgui.ImVec2(sw/2.5, sh/2.5), imgui.Cond.FirstUseEver)
 		imgui.Begin(u8"RDS Events", window_mess)
 		
-		imgui.CenterText(u8"Ваш Nick: " .. sampGetPlayerNickname(id))
-		imgui.CenterText(u8"Ваш ID: " .. id)
+		imgui.CenterText(u8"Р’Р°С€ Nick: " .. sampGetPlayerNickname(id))
+		imgui.CenterText(u8"Р’Р°С€ ID: " .. id)
 	
-	imgui.SetCursorPosX((imgui.GetWindowWidth() - imgui.CalcTextSize(u8"Текст кнопки").x) / 2)
-	if imgui.Button(u8"Исправить баги") then
+	imgui.SetCursorPosX((imgui.GetWindowWidth() - imgui.CalcTextSize(u8"РўРµРєСЃС‚ РєРЅРѕРїРєРё").x) / 2)
+	if imgui.Button(u8"РСЃРїСЂР°РІРёС‚СЊ Р±Р°РіРё") then
 		thisScript():reload()
 	end
 	imgui.SameLine()
-	imgui.Help(u8"Если информация о вас не корректная, следует нажать на данную кнопку")
-		if imgui.CollapsingHeader(u8"Сторонние Программы") then
-		imgui.Text(u8'================= Информация =================')
-		imgui.Text(u8'На сервере запрещены Сторонние Программы.')
-		imgui.Text(u8'Которые дают преимущества над игроками.')
-		imgui.Text(u8'Если вы заметите игрока со Сторонними Программами.')
-		imgui.Text(u8'Пишите администраторам:"/report id причина"')
-		imgui.Text(u8'================= Информация =================')
-		if imgui.Button(u8"Отправить", btn_size) then
-		sampSendChat("/mess 12 ================= Информация =================")
-		sampSendChat("/mess 6 На сервере запрещены Сторонние Программы.")
-		sampSendChat("/mess 6 Которые дают преимущества над игроками.")
-		sampSendChat("/mess 6 Если вы заметите игрока со Сторонними Программами.")
-		sampSendChat("/mess 6 Пишите администраторам:'/report id причина' ")
-		sampSendChat("/mess 12 ================= Информация =================")
+	imgui.Help(u8"Р•СЃР»Рё РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІР°СЃ РЅРµ РєРѕСЂСЂРµРєС‚РЅР°СЏ, СЃР»РµРґСѓРµС‚ РЅР°Р¶Р°С‚СЊ РЅР° РґР°РЅРЅСѓСЋ РєРЅРѕРїРєСѓ")
+		if imgui.CollapsingHeader(u8"РЎС‚РѕСЂРѕРЅРЅРёРµ РџСЂРѕРіСЂР°РјРјС‹") then
+		imgui.Text(u8'================= РРЅС„РѕСЂРјР°С†РёСЏ =================')
+		imgui.Text(u8'РќР° СЃРµСЂРІРµСЂРµ Р·Р°РїСЂРµС‰РµРЅС‹ РЎС‚РѕСЂРѕРЅРЅРёРµ РџСЂРѕРіСЂР°РјРјС‹.')
+		imgui.Text(u8'РљРѕС‚РѕСЂС‹Рµ РґР°СЋС‚ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° РЅР°Рґ РёРіСЂРѕРєР°РјРё.')
+		imgui.Text(u8'Р•СЃР»Рё РІС‹ Р·Р°РјРµС‚РёС‚Рµ РёРіСЂРѕРєР° СЃРѕ РЎС‚РѕСЂРѕРЅРЅРёРјРё РџСЂРѕРіСЂР°РјРјР°РјРё.')
+		imgui.Text(u8'РџРёС€РёС‚Рµ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°Рј:"/report id РїСЂРёС‡РёРЅР°"')
+		imgui.Text(u8'================= РРЅС„РѕСЂРјР°С†РёСЏ =================')
+		if imgui.Button(u8"РћС‚РїСЂР°РІРёС‚СЊ", btn_size) then
+		sampSendChat("/mess 12 ================= РРЅС„РѕСЂРјР°С†РёСЏ =================")
+		sampSendChat("/mess 6 РќР° СЃРµСЂРІРµСЂРµ Р·Р°РїСЂРµС‰РµРЅС‹ РЎС‚РѕСЂРѕРЅРЅРёРµ РџСЂРѕРіСЂР°РјРјС‹.")
+		sampSendChat("/mess 6 РљРѕС‚РѕСЂС‹Рµ РґР°СЋС‚ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° РЅР°Рґ РёРіСЂРѕРєР°РјРё.")
+		sampSendChat("/mess 6 Р•СЃР»Рё РІС‹ Р·Р°РјРµС‚РёС‚Рµ РёРіСЂРѕРєР° СЃРѕ РЎС‚РѕСЂРѕРЅРЅРёРјРё РџСЂРѕРіСЂР°РјРјР°РјРё.")
+		sampSendChat("/mess 6 РџРёС€РёС‚Рµ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°Рј:'/report id РїСЂРёС‡РёРЅР°' ")
+		sampSendChat("/mess 12 ================= РРЅС„РѕСЂРјР°С†РёСЏ =================")
 		window_mess.v = false
 		imgui.Process = false
 		end
 		imgui.Separator()
 		end
         
-			if imgui.CollapsingHeader(u8"Спавн Транспорта") then
-		imgui.Text(u8'====================== Респавн Авто ========================')
-		imgui.Text(u8'Уважаемые игроки, через 15 секунд будет произведен.')
-		imgui.Text(u8'Респавн Транспортного средства, чтобы не потерять его.')
-		imgui.Text(u8'Займите Водительское/Пассажирское место')
-		imgui.Text(u8'Приятной игры на Russian Drift Server.')
-		imgui.Text(u8'================= Респавн Авто ===============')
-		if imgui.Button(u8"Отправить", btn_size) then
-		sampSendChat("/mess 12 ====================== Респавн Авто ========================")
-		sampSendChat("/mess 6 Уважаемые игроки, через 15 секунд будет произведен.")
-		sampSendChat("/mess 6 Респавн Транспортного средства, чтобы не потерять его.")
-		sampSendChat("/mess 6 Займите Водительское/Пассажирское место")
+			if imgui.CollapsingHeader(u8"РЎРїР°РІРЅ РўСЂР°РЅСЃРїРѕСЂС‚Р°") then
+		imgui.Text(u8'====================== Р РµСЃРїР°РІРЅ РђРІС‚Рѕ ========================')
+		imgui.Text(u8'РЈРІР°Р¶Р°РµРјС‹Рµ РёРіСЂРѕРєРё, С‡РµСЂРµР· 15 СЃРµРєСѓРЅРґ Р±СѓРґРµС‚ РїСЂРѕРёР·РІРµРґРµРЅ.')
+		imgui.Text(u8'Р РµСЃРїР°РІРЅ РўСЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°, С‡С‚РѕР±С‹ РЅРµ РїРѕС‚РµСЂСЏС‚СЊ РµРіРѕ.')
+		imgui.Text(u8'Р—Р°Р№РјРёС‚Рµ Р’РѕРґРёС‚РµР»СЊСЃРєРѕРµ/РџР°СЃСЃР°Р¶РёСЂСЃРєРѕРµ РјРµСЃС‚Рѕ')
+		imgui.Text(u8'РџСЂРёСЏС‚РЅРѕР№ РёРіСЂС‹ РЅР° Russian Drift Server.')
+		imgui.Text(u8'================= Р РµСЃРїР°РІРЅ РђРІС‚Рѕ ===============')
+		if imgui.Button(u8"РћС‚РїСЂР°РІРёС‚СЊ", btn_size) then
+		sampSendChat("/mess 12 ====================== Р РµСЃРїР°РІРЅ РђРІС‚Рѕ ========================")
+		sampSendChat("/mess 6 РЈРІР°Р¶Р°РµРјС‹Рµ РёРіСЂРѕРєРё, С‡РµСЂРµР· 15 СЃРµРєСѓРЅРґ Р±СѓРґРµС‚ РїСЂРѕРёР·РІРµРґРµРЅ.")
+		sampSendChat("/mess 6 Р РµСЃРїР°РІРЅ РўСЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°, С‡С‚РѕР±С‹ РЅРµ РїРѕС‚РµСЂСЏС‚СЊ РµРіРѕ.")
+		sampSendChat("/mess 6 Р—Р°Р№РјРёС‚Рµ Р’РѕРґРёС‚РµР»СЊСЃРєРѕРµ/РџР°СЃСЃР°Р¶РёСЂСЃРєРѕРµ РјРµСЃС‚Рѕ")
 		sampSendChat("/spawncars 15")
 		sampSendChat("/delcarall")
-		sampSendChat("/mess 12 ====================== Респавн Авто ========================")
+		sampSendChat("/mess 12 ====================== Р РµСЃРїР°РІРЅ РђРІС‚Рѕ ========================")
 		window_mess.v = false
 		imgui.Process = false
 		end
 		imgui.Separator()
 		end
 		
-		if imgui.CollapsingHeader(u8"Жалоба на Администрацию") then
-		imgui.Text(u8'================== Информация ==================')
-		imgui.Text(u8'Не согласны с наказание какого-то администратора ?')
-		imgui.Text(u8'Вы можете подать жалобу на него, либо разблокировку.')
-		imgui.Text(u8'Просто перейдите в нужное обсуждение по ссылке ниже.')
-		imgui.Text(u8'Группа: "https://vk.com/dmdriftgta".')
-		imgui.Text(u8'============== Неверное наказание ===============')
-		if imgui.Button(u8"Отправить", btn_size) then
-		sampSendChat("/mess 12 ================== Информация ==================")
-		sampSendChat("/mess 6 Не согласны с наказание какого-то администратора?")
-		sampSendChat("/mess 6 Вы можете подать жалобу на него, либо разблокировку.")
-		sampSendChat("/mess 6 Просто перейдите в нужное обсуждение по ссылке ниже.")
-		sampSendChat("/mess 6 Группа: https://vk.com/dmdriftgta")
-		sampSendChat("/mess 12 ============== Неверное наказание ===============")
+		if imgui.CollapsingHeader(u8"Р–Р°Р»РѕР±Р° РЅР° РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЋ") then
+		imgui.Text(u8'================== РРЅС„РѕСЂРјР°С†РёСЏ ==================')
+		imgui.Text(u8'РќРµ СЃРѕРіР»Р°СЃРЅС‹ СЃ РЅР°РєР°Р·Р°РЅРёРµ РєР°РєРѕРіРѕ-С‚Рѕ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР° ?')
+		imgui.Text(u8'Р’С‹ РјРѕР¶РµС‚Рµ РїРѕРґР°С‚СЊ Р¶Р°Р»РѕР±Сѓ РЅР° РЅРµРіРѕ, Р»РёР±Рѕ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєСѓ.')
+		imgui.Text(u8'РџСЂРѕСЃС‚Рѕ РїРµСЂРµР№РґРёС‚Рµ РІ РЅСѓР¶РЅРѕРµ РѕР±СЃСѓР¶РґРµРЅРёРµ РїРѕ СЃСЃС‹Р»РєРµ РЅРёР¶Рµ.')
+		imgui.Text(u8'Р“СЂСѓРїРїР°: "https://vk.com/dmdriftgta".')
+		imgui.Text(u8'============== РќРµРІРµСЂРЅРѕРµ РЅР°РєР°Р·Р°РЅРёРµ ===============')
+		if imgui.Button(u8"РћС‚РїСЂР°РІРёС‚СЊ", btn_size) then
+		sampSendChat("/mess 12 ================== РРЅС„РѕСЂРјР°С†РёСЏ ==================")
+		sampSendChat("/mess 6 РќРµ СЃРѕРіР»Р°СЃРЅС‹ СЃ РЅР°РєР°Р·Р°РЅРёРµ РєР°РєРѕРіРѕ-С‚Рѕ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°?")
+		sampSendChat("/mess 6 Р’С‹ РјРѕР¶РµС‚Рµ РїРѕРґР°С‚СЊ Р¶Р°Р»РѕР±Сѓ РЅР° РЅРµРіРѕ, Р»РёР±Рѕ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєСѓ.")
+		sampSendChat("/mess 6 РџСЂРѕСЃС‚Рѕ РїРµСЂРµР№РґРёС‚Рµ РІ РЅСѓР¶РЅРѕРµ РѕР±СЃСѓР¶РґРµРЅРёРµ РїРѕ СЃСЃС‹Р»РєРµ РЅРёР¶Рµ.")
+		sampSendChat("/mess 6 Р“СЂСѓРїРїР°: https://vk.com/dmdriftgta")
+		sampSendChat("/mess 12 ============== РќРµРІРµСЂРЅРѕРµ РЅР°РєР°Р·Р°РЅРёРµ ===============")
 		window_mess.v = false
 		imgui.Process = false
 		end
 		imgui.Separator()
 		end
 		
-		if imgui.CollapsingHeader(u8"Центральный Рынок") then
-		imgui.Text(u8'===================== Информация =====================')
-		imgui.Text(u8'Желаете приобрести аксессуар за Вирты/Очки/Коины/Рубли?')
-		imgui.Text(u8'Добро пожаловать на рынок, по команде: "/trade"')
-		imgui.Text(u8'Так же, подойдя к NPC, можно обменять валюты. ')
-		imgui.Text(u8'Но учтите... Не нужно вредить игрокам.')
-		imgui.Text(u8'================= Рынок/Обмен валют ==================')
-		if imgui.Button(u8"Отправить", btn_size) then
-		sampSendChat("/mess 12 ===================== Информация =====================")
-		sampSendChat("/mess 6 Желаете приобрести аксессуар за Вирты/Очки/Коины/Рубли?")
-		sampSendChat("/mess 6 Добро пожаловать на рынок, по команде: /trade")
-		sampSendChat("/mess 6 Так же, подойдя к NPC, можно обменять валюты.")
-		sampSendChat("/mess 6 Но учтите... Не нужно вредить игрокам.")
-		sampSendChat("/mess 12 ================= Рынок/Обмен валют ==================")
+		if imgui.CollapsingHeader(u8"Р¦РµРЅС‚СЂР°Р»СЊРЅС‹Р№ Р С‹РЅРѕРє") then
+		imgui.Text(u8'===================== РРЅС„РѕСЂРјР°С†РёСЏ =====================')
+		imgui.Text(u8'Р–РµР»Р°РµС‚Рµ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєСЃРµСЃСЃСѓР°СЂ Р·Р° Р’РёСЂС‚С‹/РћС‡РєРё/РљРѕРёРЅС‹/Р СѓР±Р»Рё?')
+		imgui.Text(u8'Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° СЂС‹РЅРѕРє, РїРѕ РєРѕРјР°РЅРґРµ: "/trade"')
+		imgui.Text(u8'РўР°Рє Р¶Рµ, РїРѕРґРѕР№РґСЏ Рє NPC, РјРѕР¶РЅРѕ РѕР±РјРµРЅСЏС‚СЊ РІР°Р»СЋС‚С‹. ')
+		imgui.Text(u8'РќРѕ СѓС‡С‚РёС‚Рµ... РќРµ РЅСѓР¶РЅРѕ РІСЂРµРґРёС‚СЊ РёРіСЂРѕРєР°Рј.')
+		imgui.Text(u8'================= Р С‹РЅРѕРє/РћР±РјРµРЅ РІР°Р»СЋС‚ ==================')
+		if imgui.Button(u8"РћС‚РїСЂР°РІРёС‚СЊ", btn_size) then
+		sampSendChat("/mess 12 ===================== РРЅС„РѕСЂРјР°С†РёСЏ =====================")
+		sampSendChat("/mess 6 Р–РµР»Р°РµС‚Рµ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєСЃРµСЃСЃСѓР°СЂ Р·Р° Р’РёСЂС‚С‹/РћС‡РєРё/РљРѕРёРЅС‹/Р СѓР±Р»Рё?")
+		sampSendChat("/mess 6 Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° СЂС‹РЅРѕРє, РїРѕ РєРѕРјР°РЅРґРµ: /trade")
+		sampSendChat("/mess 6 РўР°Рє Р¶Рµ, РїРѕРґРѕР№РґСЏ Рє NPC, РјРѕР¶РЅРѕ РѕР±РјРµРЅСЏС‚СЊ РІР°Р»СЋС‚С‹.")
+		sampSendChat("/mess 6 РќРѕ СѓС‡С‚РёС‚Рµ... РќРµ РЅСѓР¶РЅРѕ РІСЂРµРґРёС‚СЊ РёРіСЂРѕРєР°Рј.")
+		sampSendChat("/mess 12 ================= Р С‹РЅРѕРє/РћР±РјРµРЅ РІР°Р»СЋС‚ ==================")
 		window_mess.v = false
 		imgui.Process = false
 		end
@@ -269,18 +269,18 @@ function imgui.OnDrawFrame()
 		end
 		 local x, y, z = getCharCoordinates(playerPed)
          local str_cords = string.format("%.2f, %.2f, %.2f", x, y, z)
-		if imgui.CollapsingHeader(u8"Мероприятия") then
-		imgui.Text(u8'Позиция игрока: '..str_cords)
-		imgui.Text(u8'Выберите мероприятие: ')
+		if imgui.CollapsingHeader(u8"РњРµСЂРѕРїСЂРёСЏС‚РёСЏ") then
+		imgui.Text(u8'РџРѕР·РёС†РёСЏ РёРіСЂРѕРєР°: '..str_cords)
+		imgui.Text(u8'Р’С‹Р±РµСЂРёС‚Рµ РјРµСЂРѕРїСЂРёСЏС‚РёРµ: ')
 		imgui.SameLine()
 		imgui.PushItemWidth(190)
 		imgui.Combo(u8'', mp_combo, arr_mp, #arr_mp)
 		
-		imgui.Text(u8"Выберите тип приза и введите его количество: ")
+		imgui.Text(u8"Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РїСЂРёР·Р° Рё РІРІРµРґРёС‚Рµ РµРіРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ: ")
 		if imgui.Combo(u8"##Prise", mp_prise, arr_prise, #arr_prise) then
 		if mp_prise.v == 0 then
 		cmd = "/agivemoney"
-		prise = "Вирт"
+		prise = "Р’РёСЂС‚"
 		end
 		if mp_prise.v == 1 then
 		cmd = "/givescore"
@@ -297,26 +297,26 @@ function imgui.OnDrawFrame()
 		if mp_prise.v == 4 then
 		cmd = "/mpwin"
 		prise_kol.v = ""
-		prise = "Стандартный"
+		prise = "РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№"
 		end
 		end
 		imgui.SameLine()
 		imgui.InputText("##PriseKol", prise_kol)
 		
-		if imgui.Button(u8"Начать МП") then
+		if imgui.Button(u8"РќР°С‡Р°С‚СЊ РњРџ") then
 		lua_thread.create(function()
-		sampSendChat("/mess 13 ===================== МероПриятие =====================")
-		sampSendChat("/mess 14 Проходит МероПриятие ".. u8:decode(arr_mp[mp_combo.v + 1]))
-		sampSendChat("/mess 14 Телепорт будет открыт ровно 60 секунд")
-		sampSendChat("/mess 14 Приз для победителя: "..prise_kol.v.." "..prise)
+		sampSendChat("/mess 13 ===================== РњРµСЂРѕРџСЂРёСЏС‚РёРµ =====================")
+		sampSendChat("/mess 14 РџСЂРѕС…РѕРґРёС‚ РњРµСЂРѕРџСЂРёСЏС‚РёРµ ".. u8:decode(arr_mp[mp_combo.v + 1]))
+		sampSendChat("/mess 14 РўРµР»РµРїРѕСЂС‚ Р±СѓРґРµС‚ РѕС‚РєСЂС‹С‚ СЂРѕРІРЅРѕ 60 СЃРµРєСѓРЅРґ")
+		sampSendChat("/mess 14 РџСЂРёР· РґР»СЏ РїРѕР±РµРґРёС‚РµР»СЏ: "..prise_kol.v.." "..prise)
 		sampSendChat("/mp")
         sampSendDialogResponse(5343, 1, 0)
 		wait(900)
 		sampSendDialogResponse(5344, 1, _, u8:decode(arr_mp[mp_combo.v + 1]))
 		wait(900)
 		sampSendDialogResponse(1)
-		sampSendChat('/mess 14 Чтобы попасть на МероПриятие следует прописать "/tpmp"')
-		sampSendChat("/mess 13 ===================== МероПриятие =====================")
+		sampSendChat('/mess 14 Р§С‚РѕР±С‹ РїРѕРїР°СЃС‚СЊ РЅР° РњРµСЂРѕРџСЂРёСЏС‚РёРµ СЃР»РµРґСѓРµС‚ РїСЂРѕРїРёСЃР°С‚СЊ "/tpmp"')
+		sampSendChat("/mess 13 ===================== РњРµСЂРѕРџСЂРёСЏС‚РёРµ =====================")
 		window_mess.v = false
 		local v = 60
 		for i=1, 60 do
@@ -324,9 +324,9 @@ function imgui.OnDrawFrame()
 		printString('~g~ '..v, 1000)
 		wait(1000)
 		end
-		sampSendChat('/mess 14 Время на телепорт вышло.')
+		sampSendChat('/mess 14 Р’СЂРµРјСЏ РЅР° С‚РµР»РµРїРѕСЂС‚ РІС‹С€Р»Рѕ.')
 		wait(1000)
-		sampSendChat('/mess 14 Закрываю телепорт')
+		sampSendChat('/mess 14 Р—Р°РєСЂС‹РІР°СЋ С‚РµР»РµРїРѕСЂС‚')
 		wait(500)
 		sampSendChat("/mp")
 		wait(700)
@@ -335,21 +335,21 @@ function imgui.OnDrawFrame()
 		end)
 		end
 		imgui.SameLine()
-		if imgui.Button(u8"Закончить МП и выдать приз") then
+		if imgui.Button(u8"Р—Р°РєРѕРЅС‡РёС‚СЊ РњРџ Рё РІС‹РґР°С‚СЊ РїСЂРёР·") then
 		lua_thread.create(function()
-		sampSendChat("/mess 13 ===================== МероПриятие =====================")
+		sampSendChat("/mess 13 ===================== РњРµСЂРѕРџСЂРёСЏС‚РёРµ =====================")
 		wait(50)
-		sampSendChat("/mess 14 Победитель мероприятия ".. u8:decode(arr_mp[mp_combo.v + 1]))
+		sampSendChat("/mess 14 РџРѕР±РµРґРёС‚РµР»СЊ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ ".. u8:decode(arr_mp[mp_combo.v + 1]))
 		wait(50)
-	    sampSendChat("/mess 14 Становится игрок: " .. sampGetPlayerNickname(mp_win.v))
+	    sampSendChat("/mess 14 РЎС‚Р°РЅРѕРІРёС‚СЃСЏ РёРіСЂРѕРє: " .. sampGetPlayerNickname(mp_win.v))
 		wait(50)
-	    sampSendChat("/mess 14 Поздравляем")
+	    sampSendChat("/mess 14 РџРѕР·РґСЂР°РІР»СЏРµРј")
 		wait(50)
 		sampSendChat(cmd.." "..mp_win.v.." "..prise_kol.v)
 		wait(50)
 		sampSendChat("/aspawn "..mp_win.v)
 		wait(50)
-		sampSendChat("/mess 13 ===================== МероПриятие =====================")
+		sampSendChat("/mess 13 ===================== РњРµСЂРѕРџСЂРёСЏС‚РёРµ =====================")
 		sampSendChat("/tweap "..id)
 		window_mess.v = false
 		end)
@@ -367,7 +367,7 @@ function imgui.OnDrawFrame()
 		give_minigun = "/setweap id 38 4000"
 		lua_thread.create(function()
 		setVirtualKeyDown(117, true)
-        wait(300) -- задержка на секунду
+        wait(300) -- Р·Р°РґРµСЂР¶РєР° РЅР° СЃРµРєСѓРЅРґСѓ
         setVirtualKeyDown(117, false)
         sampSetChatInputText(give_minigun)
 		end)
@@ -376,7 +376,7 @@ function imgui.OnDrawFrame()
 		
 		
 		imgui.Text("")
-		imgui.Text(u8"Введите ID победителя: ")
+		imgui.Text(u8"Р’РІРµРґРёС‚Рµ ID РїРѕР±РµРґРёС‚РµР»СЏ: ")
 		imgui.SameLine()
 		imgui.InputText("##123123123123", mp_win)
 	
@@ -412,37 +412,37 @@ function main()
 	sampfuncsRegisterConsoleCommand("reloadscripts", reload) --registering sf console command
 	
 	imgui.ShowCursor = false
-   sampAddChatMessage(tag .. "Идет проверка сервера.")
+   sampAddChatMessage(tag .. "РРґРµС‚ РїСЂРѕРІРµСЂРєР° СЃРµСЂРІРµСЂР°.")
 	wait(1000)
 	  if not checkServer(select(1, sampGetCurrentServerAddress())) then
-		sampAddChatMessage(tag .. "Скрипт работает только на серверах RDS!")
+		sampAddChatMessage(tag .. "РЎРєСЂРёРїС‚ СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ РЅР° СЃРµСЂРІРµСЂР°С… RDS!")
 		wait(1000)
 		thisScript():unload()
 	end
 	 wait(1000)
 	if not doesDirectoryExist(getWorkingDirectory() .. "/config") then
-       sampAddChatMessage(tag .. "У вас отсутствует папка config, создаю папку.")
+       sampAddChatMessage(tag .. "РЈ РІР°СЃ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РїР°РїРєР° config, СЃРѕР·РґР°СЋ РїР°РїРєСѓ.")
 		createDirectory(getWorkingDirectory() .. "/config")
 		wait(600)
-		sampAddChatMessage(tag .. "Папка создана.")
+		sampAddChatMessage(tag .. "РџР°РїРєР° СЃРѕР·РґР°РЅР°.")
 end
 	
 	if not doesDirectoryExist(getWorkingDirectory() .. "/config/Event") then
-	    sampAddChatMessage(tag .. "Создаю папку Event")
+	    sampAddChatMessage(tag .. "РЎРѕР·РґР°СЋ РїР°РїРєСѓ Event")
 		createDirectory(getWorkingDirectory() .. "/config/Event")
 		wait(300)
-		 sampAddChatMessage(tag .. "Папка Event создана.")
+		 sampAddChatMessage(tag .. "РџР°РїРєР° Event СЃРѕР·РґР°РЅР°.")
 	end
 	
-	sampAddChatMessage(tag .. "Идет проверка обновления")
+	sampAddChatMessage(tag .. "РРґРµС‚ РїСЂРѕРІРµСЂРєР° РѕР±РЅРѕРІР»РµРЅРёСЏ")
 	wait(1000)
 	autoupdate("https://raw.githubusercontent.com/Vrednaya1234/Scripts-SAMP/main/update.json", '['..string.upper(thisScript().name)..']: ', "https://vk.com/coding.lua_yamada")
 
 
-sampAddChatMessage(tag .. "Foxed язк")
-	sampAddChatMessage(tag .. "Скрипт готов к работе!")
-	sampAddChatMessage(tag .. "Автор скрипта: " .. script_author)
-	sampAddChatMessage(tag .. "Версия скрипта: " .. script_version)
+sampAddChatMessage(tag .. "Foxed СЏР·Рє")
+	sampAddChatMessage(tag .. "РЎРєСЂРёРїС‚ РіРѕС‚РѕРІ Рє СЂР°Р±РѕС‚Рµ!")
+	sampAddChatMessage(tag .. "РђРІС‚РѕСЂ СЃРєСЂРёРїС‚Р°: " .. script_author)
+	sampAddChatMessage(tag .. "Р’РµСЂСЃРёСЏ СЃРєСЂРёРїС‚Р°: " .. script_version)
 	
 
 	
@@ -497,21 +497,21 @@ function autoupdate(json_url, prefix, url)
               lua_thread.create(function(prefix)
                 local dlstatus = require('moonloader').download_status
                 local color = -1
-                sampAddChatMessage((prefix..'Обнаружено обновление. Пытаюсь обновиться c '..thisScript().version..' на '..updateversion), color)
+                sampAddChatMessage((prefix..'РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџС‹С‚Р°СЋСЃСЊ РѕР±РЅРѕРІРёС‚СЊСЃСЏ c '..thisScript().version..' РЅР° '..updateversion), color)
                 wait(250)
                 downloadUrlToFile(updatelink, thisScript().path,
                   function(id3, status1, p13, p23)
                     if status1 == dlstatus.STATUS_DOWNLOADINGDATA then
-                      print(string.format('Загружено %d из %d.', p13, p23))
+                      print(string.format('Р—Р°РіСЂСѓР¶РµРЅРѕ %d РёР· %d.', p13, p23))
                     elseif status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-                      print('Загрузка обновления завершена.')
-                      sampAddChatMessage((prefix..'Обновление завершено!'), color)
+                      print('Р—Р°РіСЂСѓР·РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°.')
+                      sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ!'), color)
                       goupdatestatus = true
                       lua_thread.create(function() wait(500) thisScript():reload() end)
                     end
                     if status1 == dlstatus.STATUSEX_ENDDOWNLOAD then
                       if goupdatestatus == nil then
-                        sampAddChatMessage((prefix..'Обновление прошло неудачно. Запускаю устаревшую версию..'), color)
+                        sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРѕС€Р»Рѕ РЅРµСѓРґР°С‡РЅРѕ. Р—Р°РїСѓСЃРєР°СЋ СѓСЃС‚Р°СЂРµРІС€СѓСЋ РІРµСЂСЃРёСЋ..'), color)
                         update = false
                       end
                     end
@@ -521,11 +521,11 @@ function autoupdate(json_url, prefix, url)
               )
             else
               update = false
-              print('v'..thisScript().version..': Обновление не требуется.')
+              print('v'..thisScript().version..': РћР±РЅРѕРІР»РµРЅРёРµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.')
             end
           end
         else
-          print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..url)
+          print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..url)
           update = false
         end
       end
