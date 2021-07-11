@@ -1,8 +1,8 @@
 script_name('Event.lua by Dashok.')
 script_properties("Event.lua")
-script_version('3.2')
+script_version('3.3')
 
--- Áèáëèîòåêè
+-- ÃÃ¨Ã¡Ã«Ã¨Ã®Ã²Ã¥ÃªÃ¨
 require "lib.moonloader"
 local ffi = require 'ffi'
 local tag = "{E3294D}RDS Events: {FFFFFF}"
@@ -25,9 +25,9 @@ local sw, sh = getScreenResolution()
 
 
 local mp_combo = imgui.ImInt(0)
-local arr_mp = {u8"Ïðÿòêè íà êîðàáëå", u8"Ïðÿòêè", u8"Ðóññêàÿ Ðóëåòêà", u8"Êîðîëü Äèãëà", u8"Fall Guys", u8"UFC", u8"Derby", u8"Fly Jump"}
-local arr_prise = {u8"Âèðòû", u8"Î÷êè", u8"Êîèíû", u8"Ðóáëè", u8"Ñòàíäàðò"}
-local arr_minigun = {u8"Ïîïðîñèòü", u8"Âûäàòü ñåáå", u8"Âûäàòü äðóãîìó"}
+local arr_mp = {u8"ÃÃ°Ã¿Ã²ÃªÃ¨ Ã­Ã  ÃªÃ®Ã°Ã Ã¡Ã«Ã¥", u8"ÃÃ°Ã¿Ã²ÃªÃ¨", u8"ÃÃ³Ã±Ã±ÃªÃ Ã¿ ÃÃ³Ã«Ã¥Ã²ÃªÃ ", u8"ÃŠÃ®Ã°Ã®Ã«Ã¼ Ã„Ã¨Ã£Ã«Ã ", u8"Fall Guys", u8"UFC", u8"Derby", u8"Fly Jump"}
+local arr_prise = {u8"Ã‚Ã¨Ã°Ã²Ã»", u8"ÃŽÃ·ÃªÃ¨", u8"ÃŠÃ®Ã¨Ã­Ã»", u8"ÃÃ³Ã¡Ã«Ã¨", u8"Ã‘Ã²Ã Ã­Ã¤Ã Ã°Ã²"}
+local arr_minigun = {u8"ÃÃ®Ã¯Ã°Ã®Ã±Ã¨Ã²Ã¼", u8"Ã‚Ã»Ã¤Ã Ã²Ã¼ Ã±Ã¥Ã¡Ã¥", u8"Ã‚Ã»Ã¤Ã Ã²Ã¼ Ã¤Ã°Ã³Ã£Ã®Ã¬Ã³"}
 local minigun_combo = imgui.ImInt(0)
 local mp_prise = imgui.ImInt(0)
 local prise_kol = imgui.ImBuffer(200)
@@ -54,7 +54,7 @@ tServers = {
         '46.174.55.87', -- 02
         '46.174.49.170', -- 03
         '46.174.55.169', -- 04
-		"46.174.49.47", -- ðàçðàáîòêà
+		"46.174.49.47", -- Ã°Ã Ã§Ã°Ã Ã¡Ã®Ã²ÃªÃ 
 		"51.254.139.153",
 		"80.66.82.191"
 }
@@ -795,7 +795,7 @@ function setInterfaceStyle(id)
 end
 setInterfaceStyle(mainIni.settings.style)
 
-local styles = {u8"Êðàñíûé", u8"Ôèîëåòîâûé", u8"Çåëåíûé", u8"Ãîëóáîé", u8"×åðíûé", u8"Æåëòûé", u8"Ñèíèé", u8"Ñåðàÿ", u8"Âèøíåâàÿ", u8"Ñâåòëî-Ñåðàÿ", u8"Òåìíî-Îðàíæåâàÿ", u8"Îðàíæåâàÿ", u8"Òåìíî-Êðàñíàÿ", u8"Òåìíî-Çåëåíàÿ", u8"ßðêî-Ñèíÿÿ", u8"Ðîçîâàÿ", u8"Òåìíî-Çåëåíàÿ 2", u8"Æåòëàÿ 2", u8"ßðêî-Êðàñíàÿ", u8"Ïóðïóðíàÿ"}
+local styles = {u8"ÃŠÃ°Ã Ã±Ã­Ã»Ã©", u8"Ã”Ã¨Ã®Ã«Ã¥Ã²Ã®Ã¢Ã»Ã©", u8"Ã‡Ã¥Ã«Ã¥Ã­Ã»Ã©", u8"ÃƒÃ®Ã«Ã³Ã¡Ã®Ã©", u8"Ã—Ã¥Ã°Ã­Ã»Ã©", u8"Ã†Ã¥Ã«Ã²Ã»Ã©", u8"Ã‘Ã¨Ã­Ã¨Ã©", u8"Ã‘Ã¥Ã°Ã Ã¿", u8"Ã‚Ã¨Ã¸Ã­Ã¥Ã¢Ã Ã¿", u8"Ã‘Ã¢Ã¥Ã²Ã«Ã®-Ã‘Ã¥Ã°Ã Ã¿", u8"Ã’Ã¥Ã¬Ã­Ã®-ÃŽÃ°Ã Ã­Ã¦Ã¥Ã¢Ã Ã¿", u8"ÃŽÃ°Ã Ã­Ã¦Ã¥Ã¢Ã Ã¿", u8"Ã’Ã¥Ã¬Ã­Ã®-ÃŠÃ°Ã Ã±Ã­Ã Ã¿", u8"Ã’Ã¥Ã¬Ã­Ã®-Ã‡Ã¥Ã«Ã¥Ã­Ã Ã¿", u8"ÃŸÃ°ÃªÃ®-Ã‘Ã¨Ã­Ã¿Ã¿", u8"ÃÃ®Ã§Ã®Ã¢Ã Ã¿", u8"Ã’Ã¥Ã¬Ã­Ã®-Ã‡Ã¥Ã«Ã¥Ã­Ã Ã¿ 2", u8"Ã†Ã¥Ã²Ã«Ã Ã¿ 2", u8"ÃŸÃ°ÃªÃ®-ÃŠÃ°Ã Ã±Ã­Ã Ã¿", u8"ÃÃ³Ã°Ã¯Ã³Ã°Ã­Ã Ã¿"}
 local cmd = ""
 local give_minigun = ""
 
@@ -828,65 +828,65 @@ function imgui.Help(text)
 end
 
 local upd = [[
-27.05.2021 | 1.0 | Ðåëèç ñêðèïòà.
+27.05.2021 | 1.0 | ÃÃ¥Ã«Ã¨Ã§ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã .
 
-1.Ãîòîâûå ñîîáùåíèÿ äëÿ /mess
-2.Ïàíåëü äëÿ ïðîâåäåíèÿ ìåðîïðèÿòèé
-3.Ðàáîòà òîëüêî íà ñåðâåðàõ RDS
-
-
-28.05.2021 | 1.2 | Ìèíè îáíîâëåíèå
-
-1.Êíîïêà èñïðàâèòü îøèáêè
-2.Ôèñê ìåëêèõ îøèáîê
-3.Ðàáîòà òîëüêî íà ñåðâåðàõ ÐÄÑ
+1.ÃƒÃ®Ã²Ã®Ã¢Ã»Ã¥ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¿ Ã¤Ã«Ã¿ /mess
+2.ÃÃ Ã­Ã¥Ã«Ã¼ Ã¤Ã«Ã¿ Ã¯Ã°Ã®Ã¢Ã¥Ã¤Ã¥Ã­Ã¨Ã¿ Ã¬Ã¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã©
+3.ÃÃ Ã¡Ã®Ã²Ã  Ã²Ã®Ã«Ã¼ÃªÃ® Ã­Ã  Ã±Ã¥Ã°Ã¢Ã¥Ã°Ã Ãµ RDS
 
 
-15.06.2021 | 1.4 | Ãëîáàëüíîå îáíîâëåíèå
+28.05.2021 | 1.2 | ÃŒÃ¨Ã­Ã¨ Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥
 
-1.Ïîëíîñòüþ ïåðåïèñàíî ìåíþ ñêðèïòà
-2.Äîáàâëåíà ñèñòåìà àâòîîáíîâëåíèÿ
-3.Èçìåíåíèå ñòèëÿ imgui
-
-
-16.06.2021 | 1.6 | Îáíîâëåíèå
-
-1.Äîáàâëåíî íîâîå ìåðîïðèÿòèå "Fly Jump"
-2.Ôèêñ ìåëêèõ îøèáîê
-3.Äîáàâëåíû ïðàâèëà äëÿ ÌÏ
+1.ÃŠÃ­Ã®Ã¯ÃªÃ  Ã¨Ã±Ã¯Ã°Ã Ã¢Ã¨Ã²Ã¼ Ã®Ã¸Ã¨Ã¡ÃªÃ¨
+2.Ã”Ã¨Ã±Ãª Ã¬Ã¥Ã«ÃªÃ¨Ãµ Ã®Ã¸Ã¨Ã¡Ã®Ãª
+3.ÃÃ Ã¡Ã®Ã²Ã  Ã²Ã®Ã«Ã¼ÃªÃ® Ã­Ã  Ã±Ã¥Ã°Ã¢Ã¥Ã°Ã Ãµ ÃÃ„Ã‘
 
 
-26.06.2021 | 2.0 | Îáíîâëåíèå
+15.06.2021 | 1.4 | ÃƒÃ«Ã®Ã¡Ã Ã«Ã¼Ã­Ã®Ã¥ Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥
 
-1.Äîáàâëåíà ñèñòåìà inicfg äëÿ ñîõðàíåíèÿ ôàéëîâ
-2.Äîáàâëåíà ôóíêöèÿ èçìåíåíèÿ ñòèëÿ ñêðèïòà
+1.ÃÃ®Ã«Ã­Ã®Ã±Ã²Ã¼Ã¾ Ã¯Ã¥Ã°Ã¥Ã¯Ã¨Ã±Ã Ã­Ã® Ã¬Ã¥Ã­Ã¾ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã 
+2.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã±Ã¨Ã±Ã²Ã¥Ã¬Ã  Ã Ã¢Ã²Ã®Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¿
+3.ÃˆÃ§Ã¬Ã¥Ã­Ã¥Ã­Ã¨Ã¥ Ã±Ã²Ã¨Ã«Ã¿ imgui
 
 
-26.06.2021 | 2.2 + 2.4 | Îáíîâëåíèå
+16.06.2021 | 1.6 | ÃŽÃ¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥
 
-1.Äîáàâëåíà íîâàÿ ïðîâåðêà îáíîâëíèÿ
-2.Ôèêñ áàãîâ
+1.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã® Ã­Ã®Ã¢Ã®Ã¥ Ã¬Ã¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã¥ "Fly Jump"
+2.Ã”Ã¨ÃªÃ± Ã¬Ã¥Ã«ÃªÃ¨Ãµ Ã®Ã¸Ã¨Ã¡Ã®Ãª
+3.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã» Ã¯Ã°Ã Ã¢Ã¨Ã«Ã  Ã¤Ã«Ã¿ ÃŒÃ
 
-26.06.2021 | 2.6 + 2.8 + 2.9 | Îáíîâëåíèå
 
-1.Äîáàâëåíà êó÷à íîâûé ñòèëåé imgui
-2.Äîáàâëåíà âêëàäêà íàñòðîéêè
-3.Äîáàâëåíà ôóíêöèÿ ñáðîñà íàñòðîåê
-4.Â ìåíþ Èíôîðìàöèÿ äîáàâëåíà êíîïêà äëÿ íàïèñàíèÿ èäåé ïî ñêðïòó
+26.06.2021 | 2.0 | ÃŽÃ¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥
+
+1.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã±Ã¨Ã±Ã²Ã¥Ã¬Ã  inicfg Ã¤Ã«Ã¿ Ã±Ã®ÃµÃ°Ã Ã­Ã¥Ã­Ã¨Ã¿ Ã´Ã Ã©Ã«Ã®Ã¢
+2.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¨Ã§Ã¬Ã¥Ã­Ã¥Ã­Ã¨Ã¿ Ã±Ã²Ã¨Ã«Ã¿ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã 
+
+
+26.06.2021 | 2.2 + 2.4 | ÃŽÃ¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥
+
+1.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã­Ã®Ã¢Ã Ã¿ Ã¯Ã°Ã®Ã¢Ã¥Ã°ÃªÃ  Ã®Ã¡Ã­Ã®Ã¢Ã«Ã­Ã¨Ã¿
+2.Ã”Ã¨ÃªÃ± Ã¡Ã Ã£Ã®Ã¢
+
+26.06.2021 | 2.6 + 2.8 + 2.9 | ÃŽÃ¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥
+
+1.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  ÃªÃ³Ã·Ã  Ã­Ã®Ã¢Ã»Ã© Ã±Ã²Ã¨Ã«Ã¥Ã© imgui
+2.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã¢ÃªÃ«Ã Ã¤ÃªÃ  Ã­Ã Ã±Ã²Ã°Ã®Ã©ÃªÃ¨
+3.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã±Ã¡Ã°Ã®Ã±Ã  Ã­Ã Ã±Ã²Ã°Ã®Ã¥Ãª
+4.Ã‚ Ã¬Ã¥Ã­Ã¾ ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  ÃªÃ­Ã®Ã¯ÃªÃ  Ã¤Ã«Ã¿ Ã­Ã Ã¯Ã¨Ã±Ã Ã­Ã¨Ã¿ Ã¨Ã¤Ã¥Ã© Ã¯Ã® Ã±ÃªÃ°Ã¯Ã²Ã³
 
 29.06.2021 | 3.0 | Global Update
 
-1.Äîáàâëåíà ôóíêöèÿ ïîêðàñêè òåêñòà
-2.Äîáàâëåíà âêëàäêà õàðàêòåðèñòèêè ÏÊ
-3.Äîáàâëåíà èíôîðìàöèÿ î ôàéëàõ
-4.Äîáàâëåíà ôóíêöèÿ âûçûâàíèÿ îêíà îøèáêè windows
-5.Äîáàâëåíà êíîïêà ïîëíîé î÷èñòêè ÷àòà
-6.Äîáàâëåí äèàëîã ïðè çàâåðøåíèè ðàáîòû ñêðèïòà
+1.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¯Ã®ÃªÃ°Ã Ã±ÃªÃ¨ Ã²Ã¥ÃªÃ±Ã²Ã 
+2.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã¢ÃªÃ«Ã Ã¤ÃªÃ  ÃµÃ Ã°Ã ÃªÃ²Ã¥Ã°Ã¨Ã±Ã²Ã¨ÃªÃ¨ ÃÃŠ
+3.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã¨Ã­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ Ã® Ã´Ã Ã©Ã«Ã Ãµ
+4.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¢Ã»Ã§Ã»Ã¢Ã Ã­Ã¨Ã¿ Ã®ÃªÃ­Ã  Ã®Ã¸Ã¨Ã¡ÃªÃ¨ windows
+5.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã  ÃªÃ­Ã®Ã¯ÃªÃ  Ã¯Ã®Ã«Ã­Ã®Ã© Ã®Ã·Ã¨Ã±Ã²ÃªÃ¨ Ã·Ã Ã²Ã 
+6.Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­ Ã¤Ã¨Ã Ã«Ã®Ã£ Ã¯Ã°Ã¨ Ã§Ã Ã¢Ã¥Ã°Ã¸Ã¥Ã­Ã¨Ã¨ Ã°Ã Ã¡Ã®Ã²Ã» Ã±ÃªÃ°Ã¨Ã¯Ã²Ã 
 
 11.07.2021 | 3.2 | Updane
 
-1.Óáðàíî îêíî ïðîâåðêè îáíîâëåíèÿ
-2.Èçìåíåíà ñèñòåìà âûáîðÿ ñòèëÿ
+1.Ã“Ã¡Ã°Ã Ã­Ã® Ã®ÃªÃ­Ã® Ã¯Ã°Ã®Ã¢Ã¥Ã°ÃªÃ¨ Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¿
+2.ÃˆÃ§Ã¬Ã¥Ã­Ã¥Ã­Ã  Ã±Ã¨Ã±Ã²Ã¥Ã¬Ã  Ã¢Ã»Ã¡Ã®Ã°Ã¿ Ã±Ã²Ã¨Ã«Ã¿
 ]]
 
 
@@ -894,6 +894,7 @@ local upd = [[
 rules = false
 
 local checked_radio_style = imgui.ImInt(mainIni.settings.style)
+check_upd = true
 
 function imgui.OnDrawFrame()
    if window_mess.v then
@@ -906,22 +907,22 @@ function imgui.OnDrawFrame()
 	
 	
 	imgui.BeginChild('##Select Setting', imgui.ImVec2(sw/8.4, sh/2.79), true)
-        if imgui.Selectable(u8"Èñï. ÏÎ", beginchild == 1) then beginchild = 1 end
-        if imgui.Selectable(u8"Ñïàâò ÒÑ", beginchild == 2) then beginchild = 2 end
-        if imgui.Selectable(u8"Æá íà Àäì", beginchild == 3) then beginchild = 3 end
-        if imgui.Selectable(u8"Öåíòð.Ðûíîê", beginchild == 4) then beginchild = 4 end
+        if imgui.Selectable(u8"ÃˆÃ±Ã¯. ÃÃŽ", beginchild == 1) then beginchild = 1 end
+        if imgui.Selectable(u8"Ã‘Ã¯Ã Ã¢Ã² Ã’Ã‘", beginchild == 2) then beginchild = 2 end
+        if imgui.Selectable(u8"Ã†Ã¡ Ã­Ã  Ã€Ã¤Ã¬", beginchild == 3) then beginchild = 3 end
+        if imgui.Selectable(u8"Ã–Ã¥Ã­Ã²Ã°.ÃÃ»Ã­Ã®Ãª", beginchild == 4) then beginchild = 4 end
 		imgui.Separator()
-        if imgui.Selectable(u8"Ìåðîïðèÿòèÿ", beginchild == 5) then beginchild = 5 end
-        if imgui.Selectable(u8"Èíôîðìàöèÿ", beginchild == 6) then beginchild = 6 end
-        if imgui.Selectable(u8"Ëîã îáíîâëåíèé", beginchild == 7) then beginchild = 7 end
+        if imgui.Selectable(u8"ÃŒÃ¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã¿", beginchild == 5) then beginchild = 5 end
+        if imgui.Selectable(u8"ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿", beginchild == 6) then beginchild = 6 end
+        if imgui.Selectable(u8"Ã‹Ã®Ã£ Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã©", beginchild == 7) then beginchild = 7 end
        
-        if imgui.Selectable(u8"Ñìåíà ñòèëÿ", beginchild == 9) then beginchild = 9 end
+        if imgui.Selectable(u8"Ã‘Ã¬Ã¥Ã­Ã  Ã±Ã²Ã¨Ã«Ã¿", beginchild == 9) then beginchild = 9 end
       
        imgui.Separator()
 		
 		if imgui.Button(u8"Rld") then
 			imgui.ShowCursor = false
-			sampAddChatMessage(tag .. "Ñêðèïò ïåðåçàãðóæàåòñÿ.")
+			sampAddChatMessage(tag .. "Ã‘ÃªÃ°Ã¨Ã¯Ã² Ã¯Ã¥Ã°Ã¥Ã§Ã Ã£Ã°Ã³Ã¦Ã Ã¥Ã²Ã±Ã¿.")
 			thisScript():reload()
 		end
 	imgui.SameLine()
@@ -947,24 +948,31 @@ imgui.SameLine()
 if imgui.Button(u8"Clear CH") then
 ClearChat()
 end
+		
+		if check_upd then
+if imgui.Button("Check UPD") then
+update()
+check_upd = false
+end
+end
         imgui.EndChild()
 		imgui.SameLine()
 		
 		if beginchild == 1 then
 		  imgui.BeginChild("##Standart", imgui.ImVec2(sw/2.75, sh/2.79), true)
-		imgui.Text(u8'================= Èíôîðìàöèÿ =================')
-		imgui.Text(u8'Íà ñåðâåðå çàïðåùåíû Ñòîðîííèå Ïðîãðàììû.')
-		imgui.Text(u8'Êîòîðûå äàþò ïðåèìóùåñòâà íàä èãðîêàìè.')
-		imgui.Text(u8'Åñëè âû çàìåòèòå èãðîêà ñî Ñòîðîííèìè Ïðîãðàììàìè.')
-		imgui.Text(u8'Ïèøèòå àäìèíèñòðàòîðàì:"/report id ïðè÷èíà"')
-		imgui.Text(u8'================= Èíôîðìàöèÿ =================')
-		if imgui.Button(u8"Îòïðàâèòü", btn_size) then
-		sampSendChat("/mess 12 ================= Èíôîðìàöèÿ =================")
-		sampSendChat("/mess 6 Íà ñåðâåðå çàïðåùåíû Ñòîðîííèå Ïðîãðàììû.")
-		sampSendChat("/mess 6 Êîòîðûå äàþò ïðåèìóùåñòâà íàä èãðîêàìè.")
-		sampSendChat("/mess 6 Åñëè âû çàìåòèòå èãðîêà ñî Ñòîðîííèìè Ïðîãðàììàìè.")
-		sampSendChat("/mess 6 Ïèøèòå àäìèíèñòðàòîðàì:'/report id ïðè÷èíà' ")
-		sampSendChat("/mess 12 ================= Èíôîðìàöèÿ =================")
+		imgui.Text(u8'================= ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ =================')
+		imgui.Text(u8'ÃÃ  Ã±Ã¥Ã°Ã¢Ã¥Ã°Ã¥ Ã§Ã Ã¯Ã°Ã¥Ã¹Ã¥Ã­Ã» Ã‘Ã²Ã®Ã°Ã®Ã­Ã­Ã¨Ã¥ ÃÃ°Ã®Ã£Ã°Ã Ã¬Ã¬Ã».')
+		imgui.Text(u8'ÃŠÃ®Ã²Ã®Ã°Ã»Ã¥ Ã¤Ã Ã¾Ã² Ã¯Ã°Ã¥Ã¨Ã¬Ã³Ã¹Ã¥Ã±Ã²Ã¢Ã  Ã­Ã Ã¤ Ã¨Ã£Ã°Ã®ÃªÃ Ã¬Ã¨.')
+		imgui.Text(u8'Ã…Ã±Ã«Ã¨ Ã¢Ã» Ã§Ã Ã¬Ã¥Ã²Ã¨Ã²Ã¥ Ã¨Ã£Ã°Ã®ÃªÃ  Ã±Ã® Ã‘Ã²Ã®Ã°Ã®Ã­Ã­Ã¨Ã¬Ã¨ ÃÃ°Ã®Ã£Ã°Ã Ã¬Ã¬Ã Ã¬Ã¨.')
+		imgui.Text(u8'ÃÃ¨Ã¸Ã¨Ã²Ã¥ Ã Ã¤Ã¬Ã¨Ã­Ã¨Ã±Ã²Ã°Ã Ã²Ã®Ã°Ã Ã¬:"/report id Ã¯Ã°Ã¨Ã·Ã¨Ã­Ã "')
+		imgui.Text(u8'================= ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ =================')
+		if imgui.Button(u8"ÃŽÃ²Ã¯Ã°Ã Ã¢Ã¨Ã²Ã¼", btn_size) then
+		sampSendChat("/mess 12 ================= ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ =================")
+		sampSendChat("/mess 6 ÃÃ  Ã±Ã¥Ã°Ã¢Ã¥Ã°Ã¥ Ã§Ã Ã¯Ã°Ã¥Ã¹Ã¥Ã­Ã» Ã‘Ã²Ã®Ã°Ã®Ã­Ã­Ã¨Ã¥ ÃÃ°Ã®Ã£Ã°Ã Ã¬Ã¬Ã».")
+		sampSendChat("/mess 6 ÃŠÃ®Ã²Ã®Ã°Ã»Ã¥ Ã¤Ã Ã¾Ã² Ã¯Ã°Ã¥Ã¨Ã¬Ã³Ã¹Ã¥Ã±Ã²Ã¢Ã  Ã­Ã Ã¤ Ã¨Ã£Ã°Ã®ÃªÃ Ã¬Ã¨.")
+		sampSendChat("/mess 6 Ã…Ã±Ã«Ã¨ Ã¢Ã» Ã§Ã Ã¬Ã¥Ã²Ã¨Ã²Ã¥ Ã¨Ã£Ã°Ã®ÃªÃ  Ã±Ã® Ã‘Ã²Ã®Ã°Ã®Ã­Ã­Ã¨Ã¬Ã¨ ÃÃ°Ã®Ã£Ã°Ã Ã¬Ã¬Ã Ã¬Ã¨.")
+		sampSendChat("/mess 6 ÃÃ¨Ã¸Ã¨Ã²Ã¥ Ã Ã¤Ã¬Ã¨Ã­Ã¨Ã±Ã²Ã°Ã Ã²Ã®Ã°Ã Ã¬:'/report id Ã¯Ã°Ã¨Ã·Ã¨Ã­Ã ' ")
+		sampSendChat("/mess 12 ================= ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ =================")
 		window_mess.v = false
 		imgui.Process = false
 		end
@@ -974,20 +982,20 @@ end
 		
 		if beginchild == 2 then
 		  imgui.BeginChild("##Standart", imgui.ImVec2(sw/2.75, sh/2.79), true)
-		imgui.Text(u8'================= Ðåñïàâí Àâòî ==========')
-		imgui.Text(u8'Óâàæàåìûå èãðîêè, ÷åðåç 15 ñåêóíä áóäåò ïðîèçâåäåí.')
-		imgui.Text(u8'Ðåñïàâí Òðàíñïîðòíîãî ñðåäñòâà, ÷òîáû íå ïîòåðÿòü åãî.')
-		imgui.Text(u8'Çàéìèòå Âîäèòåëüñêîå/Ïàññàæèðñêîå ìåñòî')
-		imgui.Text(u8'Ïðèÿòíîé èãðû íà Russian Drift Server.')
-		imgui.Text(u8'================= Ðåñïàâí Àâòî ===============')
-		if imgui.Button(u8"Îòïðàâèòü", btn_size) then
-		sampSendChat("/mess 12 ====================== Ðåñïàâí Àâòî ========================")
-		sampSendChat("/mess 6 Óâàæàåìûå èãðîêè, ÷åðåç 15 ñåêóíä áóäåò ïðîèçâåäåí.")
-		sampSendChat("/mess 6 Ðåñïàâí Òðàíñïîðòíîãî ñðåäñòâà, ÷òîáû íå ïîòåðÿòü åãî.")
-		sampSendChat("/mess 6 Çàéìèòå Âîäèòåëüñêîå/Ïàññàæèðñêîå ìåñòî")
+		imgui.Text(u8'================= ÃÃ¥Ã±Ã¯Ã Ã¢Ã­ Ã€Ã¢Ã²Ã® ==========')
+		imgui.Text(u8'Ã“Ã¢Ã Ã¦Ã Ã¥Ã¬Ã»Ã¥ Ã¨Ã£Ã°Ã®ÃªÃ¨, Ã·Ã¥Ã°Ã¥Ã§ 15 Ã±Ã¥ÃªÃ³Ã­Ã¤ Ã¡Ã³Ã¤Ã¥Ã² Ã¯Ã°Ã®Ã¨Ã§Ã¢Ã¥Ã¤Ã¥Ã­.')
+		imgui.Text(u8'ÃÃ¥Ã±Ã¯Ã Ã¢Ã­ Ã’Ã°Ã Ã­Ã±Ã¯Ã®Ã°Ã²Ã­Ã®Ã£Ã® Ã±Ã°Ã¥Ã¤Ã±Ã²Ã¢Ã , Ã·Ã²Ã®Ã¡Ã» Ã­Ã¥ Ã¯Ã®Ã²Ã¥Ã°Ã¿Ã²Ã¼ Ã¥Ã£Ã®.')
+		imgui.Text(u8'Ã‡Ã Ã©Ã¬Ã¨Ã²Ã¥ Ã‚Ã®Ã¤Ã¨Ã²Ã¥Ã«Ã¼Ã±ÃªÃ®Ã¥/ÃÃ Ã±Ã±Ã Ã¦Ã¨Ã°Ã±ÃªÃ®Ã¥ Ã¬Ã¥Ã±Ã²Ã®')
+		imgui.Text(u8'ÃÃ°Ã¨Ã¿Ã²Ã­Ã®Ã© Ã¨Ã£Ã°Ã» Ã­Ã  Russian Drift Server.')
+		imgui.Text(u8'================= ÃÃ¥Ã±Ã¯Ã Ã¢Ã­ Ã€Ã¢Ã²Ã® ===============')
+		if imgui.Button(u8"ÃŽÃ²Ã¯Ã°Ã Ã¢Ã¨Ã²Ã¼", btn_size) then
+		sampSendChat("/mess 12 ====================== ÃÃ¥Ã±Ã¯Ã Ã¢Ã­ Ã€Ã¢Ã²Ã® ========================")
+		sampSendChat("/mess 6 Ã“Ã¢Ã Ã¦Ã Ã¥Ã¬Ã»Ã¥ Ã¨Ã£Ã°Ã®ÃªÃ¨, Ã·Ã¥Ã°Ã¥Ã§ 15 Ã±Ã¥ÃªÃ³Ã­Ã¤ Ã¡Ã³Ã¤Ã¥Ã² Ã¯Ã°Ã®Ã¨Ã§Ã¢Ã¥Ã¤Ã¥Ã­.")
+		sampSendChat("/mess 6 ÃÃ¥Ã±Ã¯Ã Ã¢Ã­ Ã’Ã°Ã Ã­Ã±Ã¯Ã®Ã°Ã²Ã­Ã®Ã£Ã® Ã±Ã°Ã¥Ã¤Ã±Ã²Ã¢Ã , Ã·Ã²Ã®Ã¡Ã» Ã­Ã¥ Ã¯Ã®Ã²Ã¥Ã°Ã¿Ã²Ã¼ Ã¥Ã£Ã®.")
+		sampSendChat("/mess 6 Ã‡Ã Ã©Ã¬Ã¨Ã²Ã¥ Ã‚Ã®Ã¤Ã¨Ã²Ã¥Ã«Ã¼Ã±ÃªÃ®Ã¥/ÃÃ Ã±Ã±Ã Ã¦Ã¨Ã°Ã±ÃªÃ®Ã¥ Ã¬Ã¥Ã±Ã²Ã®")
 		sampSendChat("/spawncars 15")
 		sampSendChat("/delcarall")
-		sampSendChat("/mess 12 ====================== Ðåñïàâí Àâòî ========================")
+		sampSendChat("/mess 12 ====================== ÃÃ¥Ã±Ã¯Ã Ã¢Ã­ Ã€Ã¢Ã²Ã® ========================")
 		window_mess.v = false
 		imgui.Process = false
 		end
@@ -997,19 +1005,19 @@ end
 
 		if beginchild == 3 then
 		  imgui.BeginChild("##Standart", imgui.ImVec2(sw/2.75, sh/2.79), true)
-		imgui.Text(u8'================== Èíôîðìàöèÿ ==================')
-		imgui.Text(u8'Íå ñîãëàñíû ñ íàêàçàíèå êàêîãî-òî àäìèíèñòðàòîðà ?')
-		imgui.Text(u8'Âû ìîæåòå ïîäàòü æàëîáó íà íåãî, ëèáî ðàçáëîêèðîâêó.')
-		imgui.Text(u8'Ïðîñòî ïåðåéäèòå â íóæíîå îáñóæäåíèå ïî ññûëêå íèæå.')
-		imgui.Text(u8'Ãðóïïà: "https://vk.com/dmdriftgta".')
-		imgui.Text(u8'============== Íåâåðíîå íàêàçàíèå ===============')
-		if imgui.Button(u8"Îòïðàâèòü", btn_size) then
-		sampSendChat("/mess 12 ================== Èíôîðìàöèÿ ==================")
-		sampSendChat("/mess 6 Íå ñîãëàñíû ñ íàêàçàíèå êàêîãî-òî àäìèíèñòðàòîðà?")
-		sampSendChat("/mess 6 Âû ìîæåòå ïîäàòü æàëîáó íà íåãî, ëèáî ðàçáëîêèðîâêó.")
-		sampSendChat("/mess 6 Ïðîñòî ïåðåéäèòå â íóæíîå îáñóæäåíèå ïî ññûëêå íèæå.")
-		sampSendChat("/mess 6 Ãðóïïà: https://vk.com/dmdriftgta")
-		sampSendChat("/mess 12 ============== Íåâåðíîå íàêàçàíèå ===============")
+		imgui.Text(u8'================== ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ ==================')
+		imgui.Text(u8'ÃÃ¥ Ã±Ã®Ã£Ã«Ã Ã±Ã­Ã» Ã± Ã­Ã ÃªÃ Ã§Ã Ã­Ã¨Ã¥ ÃªÃ ÃªÃ®Ã£Ã®-Ã²Ã® Ã Ã¤Ã¬Ã¨Ã­Ã¨Ã±Ã²Ã°Ã Ã²Ã®Ã°Ã  ?')
+		imgui.Text(u8'Ã‚Ã» Ã¬Ã®Ã¦Ã¥Ã²Ã¥ Ã¯Ã®Ã¤Ã Ã²Ã¼ Ã¦Ã Ã«Ã®Ã¡Ã³ Ã­Ã  Ã­Ã¥Ã£Ã®, Ã«Ã¨Ã¡Ã® Ã°Ã Ã§Ã¡Ã«Ã®ÃªÃ¨Ã°Ã®Ã¢ÃªÃ³.')
+		imgui.Text(u8'ÃÃ°Ã®Ã±Ã²Ã® Ã¯Ã¥Ã°Ã¥Ã©Ã¤Ã¨Ã²Ã¥ Ã¢ Ã­Ã³Ã¦Ã­Ã®Ã¥ Ã®Ã¡Ã±Ã³Ã¦Ã¤Ã¥Ã­Ã¨Ã¥ Ã¯Ã® Ã±Ã±Ã»Ã«ÃªÃ¥ Ã­Ã¨Ã¦Ã¥.')
+		imgui.Text(u8'ÃƒÃ°Ã³Ã¯Ã¯Ã : "https://vk.com/dmdriftgta".')
+		imgui.Text(u8'============== ÃÃ¥Ã¢Ã¥Ã°Ã­Ã®Ã¥ Ã­Ã ÃªÃ Ã§Ã Ã­Ã¨Ã¥ ===============')
+		if imgui.Button(u8"ÃŽÃ²Ã¯Ã°Ã Ã¢Ã¨Ã²Ã¼", btn_size) then
+		sampSendChat("/mess 12 ================== ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ ==================")
+		sampSendChat("/mess 6 ÃÃ¥ Ã±Ã®Ã£Ã«Ã Ã±Ã­Ã» Ã± Ã­Ã ÃªÃ Ã§Ã Ã­Ã¨Ã¥ ÃªÃ ÃªÃ®Ã£Ã®-Ã²Ã® Ã Ã¤Ã¬Ã¨Ã­Ã¨Ã±Ã²Ã°Ã Ã²Ã®Ã°Ã ?")
+		sampSendChat("/mess 6 Ã‚Ã» Ã¬Ã®Ã¦Ã¥Ã²Ã¥ Ã¯Ã®Ã¤Ã Ã²Ã¼ Ã¦Ã Ã«Ã®Ã¡Ã³ Ã­Ã  Ã­Ã¥Ã£Ã®, Ã«Ã¨Ã¡Ã® Ã°Ã Ã§Ã¡Ã«Ã®ÃªÃ¨Ã°Ã®Ã¢ÃªÃ³.")
+		sampSendChat("/mess 6 ÃÃ°Ã®Ã±Ã²Ã® Ã¯Ã¥Ã°Ã¥Ã©Ã¤Ã¨Ã²Ã¥ Ã¢ Ã­Ã³Ã¦Ã­Ã®Ã¥ Ã®Ã¡Ã±Ã³Ã¦Ã¤Ã¥Ã­Ã¨Ã¥ Ã¯Ã® Ã±Ã±Ã»Ã«ÃªÃ¥ Ã­Ã¨Ã¦Ã¥.")
+		sampSendChat("/mess 6 ÃƒÃ°Ã³Ã¯Ã¯Ã : https://vk.com/dmdriftgta")
+		sampSendChat("/mess 12 ============== ÃÃ¥Ã¢Ã¥Ã°Ã­Ã®Ã¥ Ã­Ã ÃªÃ Ã§Ã Ã­Ã¨Ã¥ ===============")
 		window_mess.v = false
 		imgui.Process = false
 		end
@@ -1019,19 +1027,19 @@ end
 		
 		if beginchild == 4 then
 		  imgui.BeginChild("##Standart", imgui.ImVec2(sw/2.75, sh/2.79), true)
-		imgui.Text(u8'===================== Èíôîðìàöèÿ =====================')
-		imgui.Text(u8'Æåëàåòå ïðèîáðåñòè àêñåññóàð çà Âèðòû/Î÷êè/Êîèíû/Ðóáëè?')
-		imgui.Text(u8'Äîáðî ïîæàëîâàòü íà ðûíîê, ïî êîìàíäå: "/trade"')
-		imgui.Text(u8'Òàê æå, ïîäîéäÿ ê NPC, ìîæíî îáìåíÿòü âàëþòû. ')
-		imgui.Text(u8'Íî ó÷òèòå... Íå íóæíî âðåäèòü èãðîêàì.')
-		imgui.Text(u8'================= Ðûíîê/Îáìåí âàëþò ==================')
-		if imgui.Button(u8"Îòïðàâèòü", btn_size) then
-		sampSendChat("/mess 12 ===================== Èíôîðìàöèÿ =====================")
-		sampSendChat("/mess 6 Æåëàåòå ïðèîáðåñòè àêñåññóàð çà Âèðòû/Î÷êè/Êîèíû/Ðóáëè?")
-		sampSendChat("/mess 6 Äîáðî ïîæàëîâàòü íà ðûíîê, ïî êîìàíäå: /trade")
-		sampSendChat("/mess 6 Òàê æå, ïîäîéäÿ ê NPC, ìîæíî îáìåíÿòü âàëþòû.")
-		sampSendChat("/mess 6 Íî ó÷òèòå... Íå íóæíî âðåäèòü èãðîêàì.")
-		sampSendChat("/mess 12 ================= Ðûíîê/Îáìåí âàëþò ==================")
+		imgui.Text(u8'===================== ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ =====================')
+		imgui.Text(u8'Ã†Ã¥Ã«Ã Ã¥Ã²Ã¥ Ã¯Ã°Ã¨Ã®Ã¡Ã°Ã¥Ã±Ã²Ã¨ Ã ÃªÃ±Ã¥Ã±Ã±Ã³Ã Ã° Ã§Ã  Ã‚Ã¨Ã°Ã²Ã»/ÃŽÃ·ÃªÃ¨/ÃŠÃ®Ã¨Ã­Ã»/ÃÃ³Ã¡Ã«Ã¨?')
+		imgui.Text(u8'Ã„Ã®Ã¡Ã°Ã® Ã¯Ã®Ã¦Ã Ã«Ã®Ã¢Ã Ã²Ã¼ Ã­Ã  Ã°Ã»Ã­Ã®Ãª, Ã¯Ã® ÃªÃ®Ã¬Ã Ã­Ã¤Ã¥: "/trade"')
+		imgui.Text(u8'Ã’Ã Ãª Ã¦Ã¥, Ã¯Ã®Ã¤Ã®Ã©Ã¤Ã¿ Ãª NPC, Ã¬Ã®Ã¦Ã­Ã® Ã®Ã¡Ã¬Ã¥Ã­Ã¿Ã²Ã¼ Ã¢Ã Ã«Ã¾Ã²Ã». ')
+		imgui.Text(u8'ÃÃ® Ã³Ã·Ã²Ã¨Ã²Ã¥... ÃÃ¥ Ã­Ã³Ã¦Ã­Ã® Ã¢Ã°Ã¥Ã¤Ã¨Ã²Ã¼ Ã¨Ã£Ã°Ã®ÃªÃ Ã¬.')
+		imgui.Text(u8'================= ÃÃ»Ã­Ã®Ãª/ÃŽÃ¡Ã¬Ã¥Ã­ Ã¢Ã Ã«Ã¾Ã² ==================')
+		if imgui.Button(u8"ÃŽÃ²Ã¯Ã°Ã Ã¢Ã¨Ã²Ã¼", btn_size) then
+		sampSendChat("/mess 12 ===================== ÃˆÃ­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã¿ =====================")
+		sampSendChat("/mess 6 Ã†Ã¥Ã«Ã Ã¥Ã²Ã¥ Ã¯Ã°Ã¨Ã®Ã¡Ã°Ã¥Ã±Ã²Ã¨ Ã ÃªÃ±Ã¥Ã±Ã±Ã³Ã Ã° Ã§Ã  Ã‚Ã¨Ã°Ã²Ã»/ÃŽÃ·ÃªÃ¨/ÃŠÃ®Ã¨Ã­Ã»/ÃÃ³Ã¡Ã«Ã¨?")
+		sampSendChat("/mess 6 Ã„Ã®Ã¡Ã°Ã® Ã¯Ã®Ã¦Ã Ã«Ã®Ã¢Ã Ã²Ã¼ Ã­Ã  Ã°Ã»Ã­Ã®Ãª, Ã¯Ã® ÃªÃ®Ã¬Ã Ã­Ã¤Ã¥: /trade")
+		sampSendChat("/mess 6 Ã’Ã Ãª Ã¦Ã¥, Ã¯Ã®Ã¤Ã®Ã©Ã¤Ã¿ Ãª NPC, Ã¬Ã®Ã¦Ã­Ã® Ã®Ã¡Ã¬Ã¥Ã­Ã¿Ã²Ã¼ Ã¢Ã Ã«Ã¾Ã²Ã».")
+		sampSendChat("/mess 6 ÃÃ® Ã³Ã·Ã²Ã¨Ã²Ã¥... ÃÃ¥ Ã­Ã³Ã¦Ã­Ã® Ã¢Ã°Ã¥Ã¤Ã¨Ã²Ã¼ Ã¨Ã£Ã°Ã®ÃªÃ Ã¬.")
+		sampSendChat("/mess 12 ================= ÃÃ»Ã­Ã®Ãª/ÃŽÃ¡Ã¬Ã¥Ã­ Ã¢Ã Ã«Ã¾Ã² ==================")
 		window_mess.v = false
 		imgui.Process = false
 		end
@@ -1044,17 +1052,17 @@ end
 		 local x, y, z = getCharCoordinates(playerPed)
          local str_cords = string.format("%.2f, %.2f, %.2f", x, y, z)
 		
-		imgui.Text(u8'Ïîçèöèÿ èãðîêà: '..str_cords)
-		imgui.Text(u8'Âûáåðèòå ìåðîïðèÿòèå: ')
+		imgui.Text(u8'ÃÃ®Ã§Ã¨Ã¶Ã¨Ã¿ Ã¨Ã£Ã°Ã®ÃªÃ : '..str_cords)
+		imgui.Text(u8'Ã‚Ã»Ã¡Ã¥Ã°Ã¨Ã²Ã¥ Ã¬Ã¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã¥: ')
 		imgui.SameLine()
 		imgui.PushItemWidth(150)
 		imgui.Combo(u8'', mp_combo, arr_mp, #arr_mp)
 		
-		imgui.Text(u8"Âûáåðèòå òèï ïðèçà è ââåäèòå åãî êîëè÷åñòâî: ")
+		imgui.Text(u8"Ã‚Ã»Ã¡Ã¥Ã°Ã¨Ã²Ã¥ Ã²Ã¨Ã¯ Ã¯Ã°Ã¨Ã§Ã  Ã¨ Ã¢Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¥Ã£Ã® ÃªÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã®: ")
 		if imgui.Combo(u8"##Prise", mp_prise, arr_prise, #arr_prise) then
 		if mp_prise.v == 0 then
 		cmd = "/agivemoney"
-		prise = "Âèðò"
+		prise = "Ã‚Ã¨Ã°Ã²"
 		end
 		if mp_prise.v == 1 then
 		cmd = "/givescore"
@@ -1071,39 +1079,39 @@ end
 		if mp_prise.v == 4 then
 		cmd = "/mpwin"
 		prise_kol.v = ""
-		prise = "Ñòàíäàðòíûé"
+		prise = "Ã‘Ã²Ã Ã­Ã¤Ã Ã°Ã²Ã­Ã»Ã©"
 		end
 		end
 		imgui.SameLine()
 		imgui.InputText("##PriseKol", prise_kol)
 		imgui.SameLine()
-		imgui.Checkbox(u8"Ïðàâèëà ÌÏ", mp_rules)
+		imgui.Checkbox(u8"ÃÃ°Ã Ã¢Ã¨Ã«Ã  ÃŒÃ", mp_rules)
 		
 		
-		if imgui.Button(u8"Íà÷àòü ÌÏ") then
+		if imgui.Button(u8"ÃÃ Ã·Ã Ã²Ã¼ ÃŒÃ") then
 		window_mess.v = false
 		lua_thread.create(function()
-		sampSendChat("/mess 13 ===================== ÌåðîÏðèÿòèå =====================")
-		sampSendChat("/mess 14 Ïðîõîäèò ÌåðîÏðèÿòèå ".. u8:decode(arr_mp[mp_combo.v + 1]))
-		sampSendChat("/mess 14 Òåëåïîðò áóäåò îòêðûò ðîâíî 60 ñåêóíä")
-		sampSendChat("/mess 14 Ïðèç äëÿ ïîáåäèòåëÿ: "..prise_kol.v.." "..prise)
+		sampSendChat("/mess 13 ===================== ÃŒÃ¥Ã°Ã®ÃÃ°Ã¨Ã¿Ã²Ã¨Ã¥ =====================")
+		sampSendChat("/mess 14 ÃÃ°Ã®ÃµÃ®Ã¤Ã¨Ã² ÃŒÃ¥Ã°Ã®ÃÃ°Ã¨Ã¿Ã²Ã¨Ã¥ ".. u8:decode(arr_mp[mp_combo.v + 1]))
+		sampSendChat("/mess 14 Ã’Ã¥Ã«Ã¥Ã¯Ã®Ã°Ã² Ã¡Ã³Ã¤Ã¥Ã² Ã®Ã²ÃªÃ°Ã»Ã² Ã°Ã®Ã¢Ã­Ã® 60 Ã±Ã¥ÃªÃ³Ã­Ã¤")
+		sampSendChat("/mess 14 ÃÃ°Ã¨Ã§ Ã¤Ã«Ã¿ Ã¯Ã®Ã¡Ã¥Ã¤Ã¨Ã²Ã¥Ã«Ã¿: "..prise_kol.v.." "..prise)
 		sampSendChat("/mp")
         sampSendDialogResponse(5343, 1, 0)
 		wait(500)
 		sampSendDialogResponse(5344, 1, _, u8:decode(arr_mp[mp_combo.v + 1]))
 		wait(500)
 		sampCloseCurrentDialogWithButton(0)
-		sampSendChat('/mess 14 ×òîáû ïîïàñòü íà ÌåðîÏðèÿòèå ñëåäóåò ïðîïèñàòü "/tpmp"')
-		sampSendChat("/mess 13 ===================== ÌåðîÏðèÿòèå =====================")
+		sampSendChat('/mess 14 Ã—Ã²Ã®Ã¡Ã» Ã¯Ã®Ã¯Ã Ã±Ã²Ã¼ Ã­Ã  ÃŒÃ¥Ã°Ã®ÃÃ°Ã¨Ã¿Ã²Ã¨Ã¥ Ã±Ã«Ã¥Ã¤Ã³Ã¥Ã² Ã¯Ã°Ã®Ã¯Ã¨Ã±Ã Ã²Ã¼ "/tpmp"')
+		sampSendChat("/mess 13 ===================== ÃŒÃ¥Ã°Ã®ÃÃ°Ã¨Ã¿Ã²Ã¨Ã¥ =====================")
 		local v = 60
 		for i=1, 60 do
 		v = v - 1
 		printString('~p~ '..v, 1000)
 		wait(1000)
 		end
-		sampSendChat('/mess 14 Âðåìÿ íà òåëåïîðò âûøëî.')
+		sampSendChat('/mess 14 Ã‚Ã°Ã¥Ã¬Ã¿ Ã­Ã  Ã²Ã¥Ã«Ã¥Ã¯Ã®Ã°Ã² Ã¢Ã»Ã¸Ã«Ã®.')
 		wait(1000)
-		sampSendChat('/mess 14 Çàêðûâàþ òåëåïîðò')
+		sampSendChat('/mess 14 Ã‡Ã ÃªÃ°Ã»Ã¢Ã Ã¾ Ã²Ã¥Ã«Ã¥Ã¯Ã®Ã°Ã²')
 		wait(500)
 		sampSendChat("/mp")
 		wait(500)
@@ -1113,30 +1121,30 @@ end
 		wait(3000)
 		if mp_rules.v then
 
-sampSendChat("/mess 10 Íà ìåðîïðèÿòèè çàïðåùàþòñÿ ñëåäóþùèå äåéñòâèÿ:")
-sampSendChat("/mess 10 Èñïîëüçîâàíèå /heal /s /r /passive, à òàêæå ÄÌ")
-sampSendChat("/mess 10 Çà íàðóøåíèå ëþáîãî èç âñåãî âûøåñêàçàííîãî")
-sampSendChat("/mess 10 Âû áóäåòå íàêàçàíû. Æåëàþ ïîáåäèòü â Ìåðîïðèÿòèè")
+sampSendChat("/mess 10 ÃÃ  Ã¬Ã¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã¨ Ã§Ã Ã¯Ã°Ã¥Ã¹Ã Ã¾Ã²Ã±Ã¿ Ã±Ã«Ã¥Ã¤Ã³Ã¾Ã¹Ã¨Ã¥ Ã¤Ã¥Ã©Ã±Ã²Ã¢Ã¨Ã¿:")
+sampSendChat("/mess 10 ÃˆÃ±Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã­Ã¨Ã¥ /heal /s /r /passive, Ã  Ã²Ã ÃªÃ¦Ã¥ Ã„ÃŒ")
+sampSendChat("/mess 10 Ã‡Ã  Ã­Ã Ã°Ã³Ã¸Ã¥Ã­Ã¨Ã¥ Ã«Ã¾Ã¡Ã®Ã£Ã® Ã¨Ã§ Ã¢Ã±Ã¥Ã£Ã® Ã¢Ã»Ã¸Ã¥Ã±ÃªÃ Ã§Ã Ã­Ã­Ã®Ã£Ã®")
+sampSendChat("/mess 10 Ã‚Ã» Ã¡Ã³Ã¤Ã¥Ã²Ã¥ Ã­Ã ÃªÃ Ã§Ã Ã­Ã». Ã†Ã¥Ã«Ã Ã¾ Ã¯Ã®Ã¡Ã¥Ã¤Ã¨Ã²Ã¼ Ã¢ ÃŒÃ¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã¨")
 		end
 		window_mess.v = false
 		end)
 		end
 		imgui.SameLine()
-		if imgui.Button(u8"Çàêîí÷èòü ÌÏ") then
+		if imgui.Button(u8"Ã‡Ã ÃªÃ®Ã­Ã·Ã¨Ã²Ã¼ ÃŒÃ") then
 		lua_thread.create(function()
-		sampSendChat("/mess 13 ===================== ÌåðîÏðèÿòèå =====================")
+		sampSendChat("/mess 13 ===================== ÃŒÃ¥Ã°Ã®ÃÃ°Ã¨Ã¿Ã²Ã¨Ã¥ =====================")
 		wait(50)
-		sampSendChat("/mess 14 Ïîáåäèòåëü ìåðîïðèÿòèÿ ".. u8:decode(arr_mp[mp_combo.v + 1]))
+		sampSendChat("/mess 14 ÃÃ®Ã¡Ã¥Ã¤Ã¨Ã²Ã¥Ã«Ã¼ Ã¬Ã¥Ã°Ã®Ã¯Ã°Ã¨Ã¿Ã²Ã¨Ã¿ ".. u8:decode(arr_mp[mp_combo.v + 1]))
 		wait(50)
-	    sampSendChat("/mess 14 Ñòàíîâèòñÿ èãðîê: " .. sampGetPlayerNickname(mp_win.v).. "["..mp_win.v.."]")
+	    sampSendChat("/mess 14 Ã‘Ã²Ã Ã­Ã®Ã¢Ã¨Ã²Ã±Ã¿ Ã¨Ã£Ã°Ã®Ãª: " .. sampGetPlayerNickname(mp_win.v).. "["..mp_win.v.."]")
 		wait(50)
-	    sampSendChat("/mess 14 Ïîçäðàâëÿåì")
+	    sampSendChat("/mess 14 ÃÃ®Ã§Ã¤Ã°Ã Ã¢Ã«Ã¿Ã¥Ã¬")
 		wait(50)
 		sampSendChat(cmd.." "..mp_win.v.." "..prise_kol.v)
 		wait(50)
 		sampSendChat("/aspawn "..mp_win.v)
 		wait(50)
-		sampSendChat("/mess 13 ===================== ÌåðîÏðèÿòèå =====================")
+		sampSendChat("/mess 13 ===================== ÃŒÃ¥Ã°Ã®ÃÃ°Ã¨Ã¿Ã²Ã¨Ã¥ =====================")
 		sampSendChat("/tweap "..id)
 		window_mess.v = false
 		end)
@@ -1154,7 +1162,7 @@ sampSendChat("/mess 10 Âû áóäåòå íàêàçàíû. Æåëàþ ïîáåäèòü â Ìåðîïðèÿòèè")
 		give_minigun = "/setweap id 38 4000"
 		lua_thread.create(function()
 		setVirtualKeyDown(117, true)
-        wait(300) -- çàäåðæêà íà ñåêóíäó
+        wait(300) -- Ã§Ã Ã¤Ã¥Ã°Ã¦ÃªÃ  Ã­Ã  Ã±Ã¥ÃªÃ³Ã­Ã¤Ã³
         setVirtualKeyDown(117, false)
         sampSetChatInputText(give_minigun)
 		end)
@@ -1163,7 +1171,7 @@ sampSendChat("/mess 10 Âû áóäåòå íàêàçàíû. Æåëàþ ïîáåäèòü â Ìåðîïðèÿòèè")
 		
 		
 		imgui.Text("")
-		imgui.Text(u8"Ââåäèòå ID ïîáåäèòåëÿ: ")
+		imgui.Text(u8"Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ ID Ã¯Ã®Ã¡Ã¥Ã¤Ã¨Ã²Ã¥Ã«Ã¿: ")
 		imgui.SameLine()
 		imgui.InputText("##123123123123", mp_win)
 	
@@ -1177,25 +1185,25 @@ sampSendChat("/mess 10 Âû áóäåòå íàêàçàíû. Æåëàþ ïîáåäèòü â Ìåðîïðèÿòèè")
 		  
 
 		  
-		 if imgui.Button(u8"Ãðóïïà ñêðèïòà") then
+		 if imgui.Button(u8"ÃƒÃ°Ã³Ã¯Ã¯Ã  Ã±ÃªÃ°Ã¨Ã¯Ã²Ã ") then
     os.execute(('explorer.exe "%s"'):format("https://vk.com/coding.lua_yamada"))
 end
 		  
-		 if imgui.Button(u8"Àâòîð ñêðèïòà") then
+		 if imgui.Button(u8"Ã€Ã¢Ã²Ã®Ã° Ã±ÃªÃ°Ã¨Ã¯Ã²Ã ") then
     os.execute(('explorer.exe "%s"'):format("https://vk.com/scr_vrd"))
 end
 
- if imgui.Button(u8"Ïîääåðæàòü ðàçðàáîòêó ñêðèïòà") then
+ if imgui.Button(u8"ÃÃ®Ã¤Ã¤Ã¥Ã°Ã¦Ã Ã²Ã¼ Ã°Ã Ã§Ã°Ã Ã¡Ã®Ã²ÃªÃ³ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã ") then
     os.execute(('explorer.exe "%s"'):format("https://www.donationalerts.com/r/dashok_"))
 end
 
- if imgui.Button(u8"Íàïèñàòü èäåþ äëÿ ðàçðàáîòêè ñêðèïòà") then
+ if imgui.Button(u8"ÃÃ Ã¯Ã¨Ã±Ã Ã²Ã¼ Ã¨Ã¤Ã¥Ã¾ Ã¤Ã«Ã¿ Ã°Ã Ã§Ã°Ã Ã¡Ã®Ã²ÃªÃ¨ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã ") then
     os.execute(('explorer.exe "%s"'):format("https://vk.com/topic-197475953_47698647"))
 end
 		 
 		 
 
- imgui.Text(u8'Åñëè âàø Nick èëè âàø Id íå ñîîòâåòñòâóþò îðèãèíàëüíîìó... \n ...òî íàæìèòå íà êíîïêó "Ïåðåçàãðóçèòü" âî âêëàäêå "Íàñòðîéêè"')		 
+ imgui.Text(u8'Ã…Ã±Ã«Ã¨ Ã¢Ã Ã¸ Nick Ã¨Ã«Ã¨ Ã¢Ã Ã¸ Id Ã­Ã¥ Ã±Ã®Ã®Ã²Ã¢Ã¥Ã²Ã±Ã²Ã¢Ã³Ã¾Ã² Ã®Ã°Ã¨Ã£Ã¨Ã­Ã Ã«Ã¼Ã­Ã®Ã¬Ã³... \n ...Ã²Ã® Ã­Ã Ã¦Ã¬Ã¨Ã²Ã¥ Ã­Ã  ÃªÃ­Ã®Ã¯ÃªÃ³ "ÃÃ¥Ã°Ã¥Ã§Ã Ã£Ã°Ã³Ã§Ã¨Ã²Ã¼" Ã¢Ã® Ã¢ÃªÃ«Ã Ã¤ÃªÃ¥ "ÃÃ Ã±Ã²Ã°Ã®Ã©ÃªÃ¨"')		 
 
 		
 		imgui.EndChild()
@@ -1211,7 +1219,7 @@ end
 		
 		if beginchild == 9 then
 		  imgui.BeginChild("##Standart", imgui.ImVec2(sw/2.75, sh/2.79), true)
-		 imgui.CenterText(u8"Âûáåðèòå íóæíûé âàì ñòèëü")
+		 imgui.CenterText(u8"Ã‚Ã»Ã¡Ã¥Ã°Ã¨Ã²Ã¥ Ã­Ã³Ã¦Ã­Ã»Ã© Ã¢Ã Ã¬ Ã±Ã²Ã¨Ã«Ã¼")
 		 
 		 
 for i=1, 19 do
@@ -1250,38 +1258,38 @@ function onScriptTerminate(script, quitGame)
         end
   
         if not noErrorDialog then
-        	sampShowDialog(131313, "{E3294D}[ Event ] Ñêðèïò çàâåðøèë ñâîþ ðàáîòó", [[
-{E3294D}                                                           ×òî äåëàòü åñëè íå ðàáîòàåò ñêðèïò?{FFC973}
+        	sampShowDialog(131313, "{E3294D}[ Event ] Ã‘ÃªÃ°Ã¨Ã¯Ã² Ã§Ã Ã¢Ã¥Ã°Ã¸Ã¨Ã« Ã±Ã¢Ã®Ã¾ Ã°Ã Ã¡Ã®Ã²Ã³", [[
+{E3294D}                                                           Ã—Ã²Ã® Ã¤Ã¥Ã«Ã Ã²Ã¼ Ã¥Ã±Ã«Ã¨ Ã­Ã¥ Ã°Ã Ã¡Ã®Ã²Ã Ã¥Ã² Ã±ÃªÃ°Ã¨Ã¯Ã²?{FFC973}
 
-1. Ñêðèïò äîëæåí áûòü óñòàíîâëåí ñòðîãî ïî èíñòðóêöèè.
- - Äàæå åñëè ó âàñ ðàíåå áûëè óñòàíîâëåíû êàêèå-òî ôàéëû âû äîëæíû èõ îáÿçàòåëüíî çàìåíèòü.
+1. Ã‘ÃªÃ°Ã¨Ã¯Ã² Ã¤Ã®Ã«Ã¦Ã¥Ã­ Ã¡Ã»Ã²Ã¼ Ã³Ã±Ã²Ã Ã­Ã®Ã¢Ã«Ã¥Ã­ Ã±Ã²Ã°Ã®Ã£Ã® Ã¯Ã® Ã¨Ã­Ã±Ã²Ã°Ã³ÃªÃ¶Ã¨Ã¨.
+ - Ã„Ã Ã¦Ã¥ Ã¥Ã±Ã«Ã¨ Ã³ Ã¢Ã Ã± Ã°Ã Ã­Ã¥Ã¥ Ã¡Ã»Ã«Ã¨ Ã³Ã±Ã²Ã Ã­Ã®Ã¢Ã«Ã¥Ã­Ã» ÃªÃ ÃªÃ¨Ã¥-Ã²Ã® Ã´Ã Ã©Ã«Ã» Ã¢Ã» Ã¤Ã®Ã«Ã¦Ã­Ã» Ã¨Ãµ Ã®Ã¡Ã¿Ã§Ã Ã²Ã¥Ã«Ã¼Ã­Ã® Ã§Ã Ã¬Ã¥Ã­Ã¨Ã²Ã¼.
 
-2. Åñëè âû óñòàíàâèëè è çàïóñòèëè ñêðèïò âïåðâûå, òî ñêîðåå âñåãî îí ïðîñòî ñêà÷àë
- íóæíûå åìó áèáëèîòåêè. Îò âàñ ëèø òðåáóåòñÿ íàæàòü CTRL + R, â 90 ïðîöåíòàõ ñëó÷àÿõ
- ýòî ïîìîãàåò
+2. Ã…Ã±Ã«Ã¨ Ã¢Ã» Ã³Ã±Ã²Ã Ã­Ã Ã¢Ã¨Ã«Ã¨ Ã¨ Ã§Ã Ã¯Ã³Ã±Ã²Ã¨Ã«Ã¨ Ã±ÃªÃ°Ã¨Ã¯Ã² Ã¢Ã¯Ã¥Ã°Ã¢Ã»Ã¥, Ã²Ã® Ã±ÃªÃ®Ã°Ã¥Ã¥ Ã¢Ã±Ã¥Ã£Ã® Ã®Ã­ Ã¯Ã°Ã®Ã±Ã²Ã® Ã±ÃªÃ Ã·Ã Ã«
+ Ã­Ã³Ã¦Ã­Ã»Ã¥ Ã¥Ã¬Ã³ Ã¡Ã¨Ã¡Ã«Ã¨Ã®Ã²Ã¥ÃªÃ¨. ÃŽÃ² Ã¢Ã Ã± Ã«Ã¨Ã¸ Ã²Ã°Ã¥Ã¡Ã³Ã¥Ã²Ã±Ã¿ Ã­Ã Ã¦Ã Ã²Ã¼ CTRL + R, Ã¢ 90 Ã¯Ã°Ã®Ã¶Ã¥Ã­Ã²Ã Ãµ Ã±Ã«Ã³Ã·Ã Ã¿Ãµ
+ Ã½Ã²Ã® Ã¯Ã®Ã¬Ã®Ã£Ã Ã¥Ã²
 
-3. Åñëè ó âàñ óñòàíîâëåí MVD Helper, òî âàì íóæíî åãî óäàëèòü, îí èñïîëüçóåò ñòàðóþ
- âåðñèþ MonnLoader 0.25, à äàííûé ñêðèïò ðàáîòàåò íà ïîñëåäíåé ñòàáèëüíîé âåðñèè 0.26
- Óäàëèòå MVD Helper è ïîâòîðîíî óñòàíîâèòå Bank Helper
+3. Ã…Ã±Ã«Ã¨ Ã³ Ã¢Ã Ã± Ã³Ã±Ã²Ã Ã­Ã®Ã¢Ã«Ã¥Ã­ MVD Helper, Ã²Ã® Ã¢Ã Ã¬ Ã­Ã³Ã¦Ã­Ã® Ã¥Ã£Ã® Ã³Ã¤Ã Ã«Ã¨Ã²Ã¼, Ã®Ã­ Ã¨Ã±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã¥Ã² Ã±Ã²Ã Ã°Ã³Ã¾
+ Ã¢Ã¥Ã°Ã±Ã¨Ã¾ MonnLoader 0.25, Ã  Ã¤Ã Ã­Ã­Ã»Ã© Ã±ÃªÃ°Ã¨Ã¯Ã² Ã°Ã Ã¡Ã®Ã²Ã Ã¥Ã² Ã­Ã  Ã¯Ã®Ã±Ã«Ã¥Ã¤Ã­Ã¥Ã© Ã±Ã²Ã Ã¡Ã¨Ã«Ã¼Ã­Ã®Ã© Ã¢Ã¥Ã°Ã±Ã¨Ã¨ 0.26
+ Ã“Ã¤Ã Ã«Ã¨Ã²Ã¥ MVD Helper Ã¨ Ã¯Ã®Ã¢Ã²Ã®Ã°Ã®Ã­Ã® Ã³Ã±Ã²Ã Ã­Ã®Ã¢Ã¨Ã²Ã¥ Bank Helper
 
-4. Âîçìîæíî ó âàñ óñòàíîâëåíû êîíôëèêòóþùèå ïðîãðàììû
- - Àíòè-ñòèëëåðû
- - Àíòè-âèðóñû
- - Ôàéëû Samp Addon
- - Äðóãèå LUA/CLEO/SF/ASI
+4. Ã‚Ã®Ã§Ã¬Ã®Ã¦Ã­Ã® Ã³ Ã¢Ã Ã± Ã³Ã±Ã²Ã Ã­Ã®Ã¢Ã«Ã¥Ã­Ã» ÃªÃ®Ã­Ã´Ã«Ã¨ÃªÃ²Ã³Ã¾Ã¹Ã¨Ã¥ Ã¯Ã°Ã®Ã£Ã°Ã Ã¬Ã¬Ã»
+ - Ã€Ã­Ã²Ã¨-Ã±Ã²Ã¨Ã«Ã«Ã¥Ã°Ã»
+ - Ã€Ã­Ã²Ã¨-Ã¢Ã¨Ã°Ã³Ã±Ã»
+ - Ã”Ã Ã©Ã«Ã» Samp Addon
+ - Ã„Ã°Ã³Ã£Ã¨Ã¥ LUA/CLEO/SF/ASI
 
-5. Äëÿ ðàáîòû ñêðèïòà íóæíû ñëåäóþùèå ôàéëû:
+5. Ã„Ã«Ã¿ Ã°Ã Ã¡Ã®Ã²Ã» Ã±ÃªÃ°Ã¨Ã¯Ã²Ã  Ã­Ã³Ã¦Ã­Ã» Ã±Ã«Ã¥Ã¤Ã³Ã¾Ã¹Ã¨Ã¥ Ã´Ã Ã©Ã«Ã»:
  - SAMPFUNCS
  - CLEO 4.1+
  - MoonLoader 0.26
- - Áèáëèîòåêè (lib)
+ - ÃÃ¨Ã¡Ã«Ã¨Ã®Ã²Ã¥ÃªÃ¨ (lib)
 
-6. Åñëè äàííûé ñêðèïò ðàáîòàë ðàíåå è âäðóã ïîÿâèëàñü ýòà îøèáêà, òî ïîïðîáóéòå óäàëèòü íàñòðîéêè
-- Â ïàïêå moonloader > Óäàëÿåì ïàïêó Config
-- Â ïàïêå moonloader > Óäàëÿåì ïàïêó Event
+6. Ã…Ã±Ã«Ã¨ Ã¤Ã Ã­Ã­Ã»Ã© Ã±ÃªÃ°Ã¨Ã¯Ã² Ã°Ã Ã¡Ã®Ã²Ã Ã« Ã°Ã Ã­Ã¥Ã¥ Ã¨ Ã¢Ã¤Ã°Ã³Ã£ Ã¯Ã®Ã¿Ã¢Ã¨Ã«Ã Ã±Ã¼ Ã½Ã²Ã  Ã®Ã¸Ã¨Ã¡ÃªÃ , Ã²Ã® Ã¯Ã®Ã¯Ã°Ã®Ã¡Ã³Ã©Ã²Ã¥ Ã³Ã¤Ã Ã«Ã¨Ã²Ã¼ Ã­Ã Ã±Ã²Ã°Ã®Ã©ÃªÃ¨
+- Ã‚ Ã¯Ã Ã¯ÃªÃ¥ moonloader > Ã“Ã¤Ã Ã«Ã¿Ã¥Ã¬ Ã¯Ã Ã¯ÃªÃ³ Config
+- Ã‚ Ã¯Ã Ã¯ÃªÃ¥ moonloader > Ã“Ã¤Ã Ã«Ã¿Ã¥Ã¬ Ã¯Ã Ã¯ÃªÃ³ Event
 
-7. Åñëè äàííûå äåéñòâèÿ íå ïîìîãëè, òî ïîïðîáóéòå óñòàíîâèòü ñêðèïò íà äðóãóþ ñáîðêó
-]], "Ïîíÿë", _, 0)
+7. Ã…Ã±Ã«Ã¨ Ã¤Ã Ã­Ã­Ã»Ã¥ Ã¤Ã¥Ã©Ã±Ã²Ã¢Ã¨Ã¿ Ã­Ã¥ Ã¯Ã®Ã¬Ã®Ã£Ã«Ã¨, Ã²Ã® Ã¯Ã®Ã¯Ã°Ã®Ã¡Ã³Ã©Ã²Ã¥ Ã³Ã±Ã²Ã Ã­Ã®Ã¢Ã¨Ã²Ã¼ Ã±ÃªÃ°Ã¨Ã¯Ã² Ã­Ã  Ã¤Ã°Ã³Ã£Ã³Ã¾ Ã±Ã¡Ã®Ã°ÃªÃ³
+]], "ÃÃ®Ã­Ã¿Ã«", _, 0)
         	setClipboardText('')
 	    end
     end
@@ -1353,28 +1361,28 @@ function main()
 	sampfuncsRegisterConsoleCommand("reloadscripts", reload) --registering sf console command
 	
 	imgui.ShowCursor = false
-   sampAddChatMessage(tag .. "Èäåò ïðîâåðêà ñåðâåðà.")
+   sampAddChatMessage(tag .. "ÃˆÃ¤Ã¥Ã² Ã¯Ã°Ã®Ã¢Ã¥Ã°ÃªÃ  Ã±Ã¥Ã°Ã¢Ã¥Ã°Ã .")
 	wait(1000)
 	  if not checkServer(select(1, sampGetCurrentServerAddress())) then
-		sampAddChatMessage(tag .. "Ñêðèïò ðàáîòàåò òîëüêî íà ñåðâåðàõ RDS!")
+		sampAddChatMessage(tag .. "Ã‘ÃªÃ°Ã¨Ã¯Ã² Ã°Ã Ã¡Ã®Ã²Ã Ã¥Ã² Ã²Ã®Ã«Ã¼ÃªÃ® Ã­Ã  Ã±Ã¥Ã°Ã¢Ã¥Ã°Ã Ãµ RDS!")
 		wait(1000)
 		thisScript():unload()
 	end
 	 wait(1000)
 	if not doesDirectoryExist(getWorkingDirectory() .. "/config") then
-       sampAddChatMessage(tag .. "Ó âàñ îòñóòñòâóåò ïàïêà config, ñîçäàþ ïàïêó.")
+       sampAddChatMessage(tag .. "Ã“ Ã¢Ã Ã± Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã Ã¯ÃªÃ  config, Ã±Ã®Ã§Ã¤Ã Ã¾ Ã¯Ã Ã¯ÃªÃ³.")
 		createDirectory(getWorkingDirectory() .. "/config")
 		wait(600)
-		sampAddChatMessage(tag .. "Ïàïêà ñîçäàíà.")
+		sampAddChatMessage(tag .. "ÃÃ Ã¯ÃªÃ  Ã±Ã®Ã§Ã¤Ã Ã­Ã .")
 end
 	
 	if not doesDirectoryExist(getWorkingDirectory() .. "/config/Event") then
-	    sampAddChatMessage(tag .. "Ñîçäàþ ïàïêó Event")
+	    sampAddChatMessage(tag .. "Ã‘Ã®Ã§Ã¤Ã Ã¾ Ã¯Ã Ã¯ÃªÃ³ Event")
 		createDirectory(getWorkingDirectory() .. "/config/Event")
 		wait(300)
-		 sampAddChatMessage(tag .. "Ïàïêà Event ñîçäàíà.")
+		 sampAddChatMessage(tag .. "ÃÃ Ã¯ÃªÃ  Event Ã±Ã®Ã§Ã¤Ã Ã­Ã .")
 	end
-	update()
+	
 	
 	
 
@@ -1382,10 +1390,10 @@ end
 
 f = io.open(getGameDirectory().."//moonloader//config//Event//PO.txt","r+");
 if f == nil then 
-      -- Ñîçäàåò ôàéë â ðåæèìå "çàïèñè"
+      -- Ã‘Ã®Ã§Ã¤Ã Ã¥Ã² Ã´Ã Ã©Ã« Ã¢ Ã°Ã¥Ã¦Ã¨Ã¬Ã¥ "Ã§Ã Ã¯Ã¨Ã±Ã¨"
       f = io.open(getGameDirectory().."//moonloader//config//Event//PO.txt","w"); 
-	  sampAddChatMessage(tag .. "Îòñóòñòâóåò ôàéë PO, ñîçäàþ ôàéë.")
-      -- Çàêðûâàåò ôàéë
+	  sampAddChatMessage(tag .. "ÃŽÃ²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã´Ã Ã©Ã« PO, Ã±Ã®Ã§Ã¤Ã Ã¾ Ã´Ã Ã©Ã«.")
+      -- Ã‡Ã ÃªÃ°Ã»Ã¢Ã Ã¥Ã² Ã´Ã Ã©Ã«
       f:close();
    end;
   
@@ -1413,35 +1421,35 @@ if f == nil then
 end
 
 function update()
-  local fpath = os.getenv('TEMP') .. '\\testing_version.json' -- êóäà áóäåò êà÷àòüñÿ íàø ôàéëèê äëÿ ñðàâíåíèÿ âåðñèè
-  downloadUrlToFile('https://raw.githubusercontent.com/Vrednaya1234/Scripts-SAMP/main/update.json', fpath, function(id, status, p1, p2) -- ññûëêó íà âàø ãèòõàá ãäå åñòü ñòðî÷êè êîòîðûå ÿ ââ¸ë â òåìå èëè ëþáîé äðóãîé ñàéò
+  local fpath = os.getenv('TEMP') .. '\\testing_version.json' -- ÃªÃ³Ã¤Ã  Ã¡Ã³Ã¤Ã¥Ã² ÃªÃ Ã·Ã Ã²Ã¼Ã±Ã¿ Ã­Ã Ã¸ Ã´Ã Ã©Ã«Ã¨Ãª Ã¤Ã«Ã¿ Ã±Ã°Ã Ã¢Ã­Ã¥Ã­Ã¨Ã¿ Ã¢Ã¥Ã°Ã±Ã¨Ã¨
+  downloadUrlToFile('https://raw.githubusercontent.com/Vrednaya1234/Scripts-SAMP/main/update.json', fpath, function(id, status, p1, p2) -- Ã±Ã±Ã»Ã«ÃªÃ³ Ã­Ã  Ã¢Ã Ã¸ Ã£Ã¨Ã²ÃµÃ Ã¡ Ã£Ã¤Ã¥ Ã¥Ã±Ã²Ã¼ Ã±Ã²Ã°Ã®Ã·ÃªÃ¨ ÃªÃ®Ã²Ã®Ã°Ã»Ã¥ Ã¿ Ã¢Ã¢Â¸Ã« Ã¢ Ã²Ã¥Ã¬Ã¥ Ã¨Ã«Ã¨ Ã«Ã¾Ã¡Ã®Ã© Ã¤Ã°Ã³Ã£Ã®Ã© Ã±Ã Ã©Ã²
     if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-    local f = io.open(fpath, 'r') -- îòêðûâàåò ôàéë
+    local f = io.open(fpath, 'r') -- Ã®Ã²ÃªÃ°Ã»Ã¢Ã Ã¥Ã² Ã´Ã Ã©Ã«
     if f then
-      local info = decodeJson(f:read('*a')) -- ÷èòàåò
+      local info = decodeJson(f:read('*a')) -- Ã·Ã¨Ã²Ã Ã¥Ã²
       updatelink = info.updateurl
       if info and info.latest then
-        version = tonumber(info.latest) -- ïåðåâîäèò âåðñèþ â ÷èñëî
-        if version > tonumber(thisScript().version) then -- åñëè âåðñèÿ áîëüøå ÷åì âåðñèÿ óñòàíîâëåííàÿ òî...
-          lua_thread.create(goupdate) -- àïäåéò
-        else -- åñëè ìåíüøå, òî
-          update = false -- íå äà¸ì îáíîâèòüñÿ 
-          sampAddChatMessage(tag ..'Ó âàñ è òàê ïîñëåäíÿÿ âåðñèÿ ñêðèïòà! Îòìåíÿþ îáíîâëåíèå.')
+        version = tonumber(info.latest) -- Ã¯Ã¥Ã°Ã¥Ã¢Ã®Ã¤Ã¨Ã² Ã¢Ã¥Ã°Ã±Ã¨Ã¾ Ã¢ Ã·Ã¨Ã±Ã«Ã®
+        if version > tonumber(thisScript().version) then -- Ã¥Ã±Ã«Ã¨ Ã¢Ã¥Ã°Ã±Ã¨Ã¿ Ã¡Ã®Ã«Ã¼Ã¸Ã¥ Ã·Ã¥Ã¬ Ã¢Ã¥Ã°Ã±Ã¨Ã¿ Ã³Ã±Ã²Ã Ã­Ã®Ã¢Ã«Ã¥Ã­Ã­Ã Ã¿ Ã²Ã®...
+          lua_thread.create(goupdate) -- Ã Ã¯Ã¤Ã¥Ã©Ã²
+        else -- Ã¥Ã±Ã«Ã¨ Ã¬Ã¥Ã­Ã¼Ã¸Ã¥, Ã²Ã®
+          update = false -- Ã­Ã¥ Ã¤Ã Â¸Ã¬ Ã®Ã¡Ã­Ã®Ã¢Ã¨Ã²Ã¼Ã±Ã¿ 
+          sampAddChatMessage(tag ..'Ã“ Ã¢Ã Ã± Ã¨ Ã²Ã Ãª Ã¯Ã®Ã±Ã«Ã¥Ã¤Ã­Ã¿Ã¿ Ã¢Ã¥Ã°Ã±Ã¨Ã¿ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã ! ÃŽÃ²Ã¬Ã¥Ã­Ã¿Ã¾ Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥.')
         end
       end
     end
   end
 end)
 end
---ñêà÷èâàíèå àêòóàëüíîé âåðñèè
+--Ã±ÃªÃ Ã·Ã¨Ã¢Ã Ã­Ã¨Ã¥ Ã ÃªÃ²Ã³Ã Ã«Ã¼Ã­Ã®Ã© Ã¢Ã¥Ã°Ã±Ã¨Ã¨
 function goupdate()
-sampAddChatMessage(tag ..'Îáíàðóæåíî íîâîå îáíîâëåíèå. Îáíîâëÿþñü...')
-sampAddChatMessage(tag ..'Òåêóùàÿ âåðñèÿ: '..thisScript().version.." Íîâàÿ âåðñèÿ: "..version)
+sampAddChatMessage(tag ..'ÃŽÃ¡Ã­Ã Ã°Ã³Ã¦Ã¥Ã­Ã® Ã­Ã®Ã¢Ã®Ã¥ Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥. ÃŽÃ¡Ã­Ã®Ã¢Ã«Ã¿Ã¾Ã±Ã¼...')
+sampAddChatMessage(tag ..'Ã’Ã¥ÃªÃ³Ã¹Ã Ã¿ Ã¢Ã¥Ã°Ã±Ã¨Ã¿: '..thisScript().version.." ÃÃ®Ã¢Ã Ã¿ Ã¢Ã¥Ã°Ã±Ã¨Ã¿: "..version)
 wait(3000)
-downloadUrlToFile(updatelink, thisScript().path, function(id3, status1, p13, p23) -- êà÷àåò âàø ôàéëèê ñ latest version
+downloadUrlToFile(updatelink, thisScript().path, function(id3, status1, p13, p23) -- ÃªÃ Ã·Ã Ã¥Ã² Ã¢Ã Ã¸ Ã´Ã Ã©Ã«Ã¨Ãª Ã± latest version
   if status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
   wait(3000)
-  sampAddChatMessage(tag ..'Îáíîâëåíèå çàâåðøåíî! Îçíàêîìèòñÿ ñ íèì ìîæíî â ìåíþ ñêðèïòà: /event > Ëîã îáíîâëåíèé')
+  sampAddChatMessage(tag ..'ÃŽÃ¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥ Ã§Ã Ã¢Ã¥Ã°Ã¸Ã¥Ã­Ã®! ÃŽÃ§Ã­Ã ÃªÃ®Ã¬Ã¨Ã²Ã±Ã¿ Ã± Ã­Ã¨Ã¬ Ã¬Ã®Ã¦Ã­Ã® Ã¢ Ã¬Ã¥Ã­Ã¾ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã : /event > Ã‹Ã®Ã£ Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã©')
   wait(4000)
   thisScript():reload()
 end
